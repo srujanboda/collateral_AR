@@ -22,16 +22,16 @@ Thank you!
             [email],
             fail_silently=False,
         )
-        return True
+        return True, ""
     except Exception as e:
         print(f"Error sending email: {e}")
-        return False
+        return False, str(e)
 
 def _send_app_link_thread(perfios_id, email, name, journey_url):
     """Internal function to be run in a thread."""
     from . import application_service
-    email_sent = send_application_link(email, name, journey_url)
-    email_status_val = 'Sent' if email_sent else 'Failed'
+    email_sent, error_msg = send_application_link(email, name, journey_url)
+    email_status_val = 'Sent' if email_sent else f'Failed: {error_msg}'
     application_service.update_application(perfios_id, {'email_status': email_status_val})
 
 def send_application_link_and_update_status(perfios_id, email, name, journey_url):

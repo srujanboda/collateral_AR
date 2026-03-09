@@ -12,27 +12,32 @@ from django.views.decorators.csrf import csrf_exempt
 @method_decorator(csrf_exempt, name='dispatch')
 class LoginView(APIView):
     def post(self, request):
-        from .serializers import LoginSerializer
-        serializer = LoginSerializer(data=request.data)
-        
-        if serializer.is_valid():
-            username = serializer.validated_data['username']
-            password = serializer.validated_data['password']
+        try:
+            from .serializers import LoginSerializer
+            serializer = LoginSerializer(data=request.data)
             
-            user = user_service.authenticate_user(username, password)
-            if user:
-                return Response({
-                    'message': 'Login successful',
-                    'user': {
-                        'username': user['username'],
-                        'role': user.get('role', 'Admin'),
-                    }
-                }, status=status.HTTP_200_OK)
-            else:
-                return Response({'error': 'Invalid username or password'}, status=status.HTTP_401_UNAUTHORIZED)
-        
-        # Return structured errors from serializer
-        return Response({'errors': serializer.errors}, status=status.HTTP_400_BAD_REQUEST)
+            if serializer.is_valid():
+                username = serializer.validated_data['username']
+                password = serializer.validated_data['password']
+                
+                user = user_service.authenticate_user(username, password)
+                if user:
+                    return Response({
+                        'message': 'Login successful',
+                        'user': {
+                            'username': user['username'],
+                            'role': user.get('role', 'Admin'),
+                        }
+                    }, status=status.HTTP_200_OK)
+                else:
+                    return Response({'error': 'Invalid username or password'}, status=status.HTTP_401_UNAUTHORIZED)
+            
+            return Response({'errors': serializer.errors}, status=status.HTTP_400_BAD_REQUEST)
+        except Exception as e:
+            return Response({
+                'error': 'Internal Server Error during login',
+                'details': str(e)
+            }, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
 #---------------------applicant create----------------------#
 class ApplicationCreateView(APIView):

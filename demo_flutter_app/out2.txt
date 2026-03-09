@@ -1,0 +1,16 @@
+﻿Analyzing demo_flutter_app...                                   
+
+  error - The named parameter 'locationSettings' isn't defined - lib\main.dart:355:9 - undefined_named_parameter
+  error - Undefined class 'ARSessionManager' - lib\main.dart:944:3 - undefined_class
+  error - Undefined class 'ARObjectManager' - lib\main.dart:945:3 - undefined_class
+warning - The value of the field '_lastSegmentDistance' isn't used - lib\main.dart:951:11 - unused_field
+warning - The value of the field '_lastHorizontalDistance' isn't used - lib\main.dart:952:11 - unused_field
+warning - The value of the field '_lastVerticalDistance' isn't used - lib\main.dart:953:11 - unused_field
+  error - Undefined name 'PlaneDetectionConfig' - lib\main.dart:990:35 - undefined_identifier
+warning - The declaration '_buildMeasureItem' isn't referenced - lib\main.dart:1168:10 - unused_element
+  error - Undefined class 'ARSessionManager' - lib\main.dart:1190:5 - undefined_class
+  error - Undefined class 'ARObjectManager' - lib\main.dart:1191:5 - undefined_class
+  error - Undefined class 'ARAnchorManager' - lib\main.dart:1192:5 - undefined_class
+  error - Undefined class 'ARLocationManager' - lib\main.dart:1193:5 - undefined_class
+  error - The name 'ARHitTestResult' isn't a type, so it can't be used as a type argument - lib\main.dart:1213:35 - non_type_as_type_argument
+

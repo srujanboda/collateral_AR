@@ -1,0 +1,57 @@
+# Python / Django
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.Python
+env/
+venv/
+ENV/
+*.egg-info/
+dist/
+build/
+*.sqlite3
+.env
+
+# Django media uploads (don't commit uploaded files)
+backend/media/
+
+# Node / React
+node_modules/
+dist/
+.vite/
+
+# Flutter
+demo_flutter_app/.dart_tool/
+demo_flutter_app/.flutter-plugins
+demo_flutter_app/.flutter-plugins-dependencies
+demo_flutter_app/build/
+demo_flutter_app/.packages
+*.iml
+*.iml.lock
+
+# Android
+demo_flutter_app/android/.gradle/
+demo_flutter_app/android/local.properties
+demo_flutter_app/android/app/debug/
+demo_flutter_app/android/app/profile/
+demo_flutter_app/android/app/release/
+*.keystore
+*.jks
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+npm-debug.log*
+
+# Antigravity
+.gemini/

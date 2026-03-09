@@ -1,0 +1,1088 @@
+﻿> Task :gradle:checkKotlinGradlePluginConfigurationErrors SKIPPED
+> Task :gradle:pluginDescriptors UP-TO-DATE
+> Task :gradle:processResources
+
+> Task :gradle:compileKotlin
+w: file:///C:/src/flutter/packages/flutter_tools/gradle/src/main/kotlin/FlutterPlugin.kt:11:37 'ApkVariant' is deprecated. Deprecated in Java
+w: file:///C:/src/flutter/packages/flutter_tools/gradle/src/main/kotlin/FlutterPlugin.kt:609:69 'ApkVariant' is deprecated. Deprecated in Java
+w: file:///C:/src/flutter/packages/flutter_tools/gradle/src/main/kotlin/plugins/PluginHandler.kt:186:64 Unchecked cast: NamedDomainObjectContainer<out BuildType> to NamedDomainObjectContainer<BuildType>
+w: file:///C:/src/flutter/packages/flutter_tools/gradle/src/main/kotlin/plugins/PluginHandler.kt:187:69 Unchecked cast: NamedDomainObjectContainer<out BuildType> to NamedDomainObjectContainer<BuildType>
+
+> Task :gradle:compileJava NO-SOURCE
+> Task :gradle:compileGroovy NO-SOURCE
+> Task :gradle:classes
+> Task :gradle:jar
+> Task :app:DebugMinSdkCheck
+> Task :app:preBuild UP-TO-DATE
+> Task :app:preDebugBuild UP-TO-DATE
+> Task :app:mergeDebugNativeDebugMetadata NO-SOURCE
+> Task :app:checkKotlinGradlePluginConfigurationErrors SKIPPED
+> Task :app:compileFlutterBuildDebug
+> Task :app:packJniLibsflutterBuildDebug
+> Task :ar_flutter_plugin:preBuild UP-TO-DATE
+> Task :ar_flutter_plugin:preDebugBuild UP-TO-DATE
+> Task :ar_flutter_plugin:writeDebugAarMetadata UP-TO-DATE
+> Task :camera_android_camerax:preBuild UP-TO-DATE
+> Task :camera_android_camerax:preDebugBuild UP-TO-DATE
+> Task :camera_android_camerax:writeDebugAarMetadata UP-TO-DATE
+> Task :flutter_foreground_task:preBuild UP-TO-DATE
+> Task :flutter_foreground_task:preDebugBuild UP-TO-DATE
+> Task :flutter_foreground_task:writeDebugAarMetadata UP-TO-DATE
+> Task :flutter_plugin_android_lifecycle:preBuild UP-TO-DATE
+> Task :flutter_plugin_android_lifecycle:preDebugBuild UP-TO-DATE
+> Task :flutter_plugin_android_lifecycle:writeDebugAarMetadata UP-TO-DATE
+> Task :flutter_screen_recording:preBuild UP-TO-DATE
+> Task :flutter_screen_recording:preDebugBuild UP-TO-DATE
+> Task :flutter_screen_recording:writeDebugAarMetadata UP-TO-DATE
+> Task :gal:preBuild UP-TO-DATE
+> Task :gal:preDebugBuild UP-TO-DATE
+> Task :gal:writeDebugAarMetadata UP-TO-DATE
+> Task :geocoding_android:preBuild UP-TO-DATE
+> Task :geocoding_android:preDebugBuild UP-TO-DATE
+> Task :geocoding_android:writeDebugAarMetadata UP-TO-DATE
+> Task :geolocator_android:preBuild UP-TO-DATE
+> Task :geolocator_android:preDebugBuild UP-TO-DATE
+> Task :geolocator_android:writeDebugAarMetadata UP-TO-DATE
+> Task :image_picker_android:preBuild UP-TO-DATE
+> Task :image_picker_android:preDebugBuild UP-TO-DATE
+> Task :image_picker_android:writeDebugAarMetadata UP-TO-DATE
+> Task :path_provider_android:preBuild UP-TO-DATE
+> Task :path_provider_android:preDebugBuild UP-TO-DATE
+> Task :path_provider_android:writeDebugAarMetadata UP-TO-DATE
+> Task :permission_handler_android:preBuild UP-TO-DATE
+> Task :permission_handler_android:preDebugBuild UP-TO-DATE
+> Task :permission_handler_android:writeDebugAarMetadata UP-TO-DATE
+> Task :shared_preferences_android:preBuild UP-TO-DATE
+> Task :shared_preferences_android:preDebugBuild UP-TO-DATE
+> Task :shared_preferences_android:writeDebugAarMetadata UP-TO-DATE
+> Task :app:checkDebugAarMetadata UP-TO-DATE
+> Task :app:cleanMergeDebugAssets
+> Task :app:mergeDebugShaders UP-TO-DATE
+> Task :app:compileDebugShaders NO-SOURCE
+> Task :app:generateDebugAssets UP-TO-DATE
+> Task :ar_flutter_plugin:mergeDebugShaders UP-TO-DATE
+> Task :ar_flutter_plugin:compileDebugShaders NO-SOURCE
+> Task :ar_flutter_plugin:generateDebugAssets UP-TO-DATE
+> Task :ar_flutter_plugin:mergeDebugAssets UP-TO-DATE
+> Task :camera_android_camerax:mergeDebugShaders UP-TO-DATE
+> Task :camera_android_camerax:compileDebugShaders NO-SOURCE
+> Task :camera_android_camerax:generateDebugAssets UP-TO-DATE
+> Task :camera_android_camerax:mergeDebugAssets UP-TO-DATE
+> Task :flutter_foreground_task:mergeDebugShaders UP-TO-DATE
+> Task :flutter_foreground_task:compileDebugShaders NO-SOURCE
+> Task :flutter_foreground_task:generateDebugAssets UP-TO-DATE
+> Task :flutter_foreground_task:mergeDebugAssets UP-TO-DATE
+> Task :flutter_plugin_android_lifecycle:mergeDebugShaders UP-TO-DATE
+> Task :flutter_plugin_android_lifecycle:compileDebugShaders NO-SOURCE
+> Task :flutter_plugin_android_lifecycle:generateDebugAssets UP-TO-DATE
+> Task :flutter_plugin_android_lifecycle:mergeDebugAssets UP-TO-DATE
+> Task :flutter_screen_recording:mergeDebugShaders UP-TO-DATE
+> Task :flutter_screen_recording:compileDebugShaders NO-SOURCE
+> Task :flutter_screen_recording:generateDebugAssets UP-TO-DATE
+> Task :flutter_screen_recording:mergeDebugAssets UP-TO-DATE
+> Task :gal:mergeDebugShaders UP-TO-DATE
+> Task :gal:compileDebugShaders NO-SOURCE
+> Task :gal:generateDebugAssets UP-TO-DATE
+> Task :gal:mergeDebugAssets UP-TO-DATE
+> Task :geocoding_android:mergeDebugShaders UP-TO-DATE
+> Task :geocoding_android:compileDebugShaders NO-SOURCE
+> Task :geocoding_android:generateDebugAssets UP-TO-DATE
+> Task :geocoding_android:mergeDebugAssets UP-TO-DATE
+> Task :geolocator_android:mergeDebugShaders UP-TO-DATE
+> Task :geolocator_android:compileDebugShaders NO-SOURCE
+> Task :geolocator_android:generateDebugAssets UP-TO-DATE
+> Task :geolocator_android:mergeDebugAssets UP-TO-DATE
+> Task :image_picker_android:mergeDebugShaders UP-TO-DATE
+> Task :image_picker_android:compileDebugShaders NO-SOURCE
+> Task :image_picker_android:generateDebugAssets UP-TO-DATE
+> Task :image_picker_android:mergeDebugAssets UP-TO-DATE
+> Task :path_provider_android:mergeDebugShaders UP-TO-DATE
+> Task :path_provider_android:compileDebugShaders NO-SOURCE
+> Task :path_provider_android:generateDebugAssets UP-TO-DATE
+> Task :path_provider_android:mergeDebugAssets UP-TO-DATE
+> Task :permission_handler_android:mergeDebugShaders UP-TO-DATE
+> Task :permission_handler_android:compileDebugShaders NO-SOURCE
+> Task :permission_handler_android:generateDebugAssets UP-TO-DATE
+> Task :permission_handler_android:mergeDebugAssets UP-TO-DATE
+> Task :shared_preferences_android:mergeDebugShaders UP-TO-DATE
+> Task :shared_preferences_android:compileDebugShaders NO-SOURCE
+> Task :shared_preferences_android:generateDebugAssets UP-TO-DATE
+> Task :shared_preferences_android:mergeDebugAssets UP-TO-DATE
+> Task :app:mergeDebugAssets
+> Task :app:copyFlutterAssetsDebug
+> Task :app:generateDebugResValues UP-TO-DATE
+> Task :ar_flutter_plugin:generateDebugResValues UP-TO-DATE
+> Task :ar_flutter_plugin:generateDebugResources UP-TO-DATE
+> Task :ar_flutter_plugin:packageDebugResources UP-TO-DATE
+> Task :camera_android_camerax:generateDebugResValues UP-TO-DATE
+> Task :camera_android_camerax:generateDebugResources UP-TO-DATE
+> Task :camera_android_camerax:packageDebugResources UP-TO-DATE
+> Task :flutter_foreground_task:generateDebugResValues UP-TO-DATE
+> Task :flutter_foreground_task:generateDebugResources UP-TO-DATE
+> Task :flutter_foreground_task:packageDebugResources UP-TO-DATE
+> Task :flutter_plugin_android_lifecycle:generateDebugResValues UP-TO-DATE
+> Task :flutter_plugin_android_lifecycle:generateDebugResources UP-TO-DATE
+> Task :flutter_plugin_android_lifecycle:packageDebugResources UP-TO-DATE
+> Task :flutter_screen_recording:generateDebugResValues UP-TO-DATE
+> Task :flutter_screen_recording:generateDebugResources UP-TO-DATE
+> Task :flutter_screen_recording:packageDebugResources UP-TO-DATE
+> Task :gal:generateDebugResValues UP-TO-DATE
+> Task :gal:generateDebugResources UP-TO-DATE
+> Task :gal:packageDebugResources UP-TO-DATE
+> Task :geocoding_android:generateDebugResValues UP-TO-DATE
+> Task :geocoding_android:generateDebugResources UP-TO-DATE
+> Task :geocoding_android:packageDebugResources UP-TO-DATE
+> Task :geolocator_android:generateDebugResValues UP-TO-DATE
+> Task :geolocator_android:generateDebugResources UP-TO-DATE
+> Task :geolocator_android:packageDebugResources UP-TO-DATE
+> Task :image_picker_android:generateDebugResValues UP-TO-DATE
+> Task :image_picker_android:generateDebugResources UP-TO-DATE
+> Task :image_picker_android:packageDebugResources UP-TO-DATE
+> Task :path_provider_android:generateDebugResValues UP-TO-DATE
+> Task :path_provider_android:generateDebugResources UP-TO-DATE
+> Task :path_provider_android:packageDebugResources UP-TO-DATE
+> Task :permission_handler_android:generateDebugResValues UP-TO-DATE
+> Task :permission_handler_android:generateDebugResources UP-TO-DATE
+> Task :permission_handler_android:packageDebugResources UP-TO-DATE
+> Task :shared_preferences_android:generateDebugResValues UP-TO-DATE
+> Task :shared_preferences_android:generateDebugResources UP-TO-DATE
+> Task :shared_preferences_android:packageDebugResources UP-TO-DATE
+> Task :app:mapDebugSourceSetPaths UP-TO-DATE
+> Task :app:generateDebugResources UP-TO-DATE
+> Task :app:mergeDebugResources UP-TO-DATE
+> Task :app:packageDebugResources UP-TO-DATE
+> Task :app:parseDebugLocalResources UP-TO-DATE
+> Task :app:createDebugCompatibleScreenManifests UP-TO-DATE
+> Task :app:extractDeepLinksDebug UP-TO-DATE
+> Task :ar_flutter_plugin:extractDeepLinksDebug UP-TO-DATE
+> Task :ar_flutter_plugin:processDebugManifest UP-TO-DATE
+> Task :camera_android_camerax:extractDeepLinksDebug UP-TO-DATE
+> Task :camera_android_camerax:processDebugManifest UP-TO-DATE
+> Task :flutter_foreground_task:extractDeepLinksDebug UP-TO-DATE
+> Task :flutter_foreground_task:processDebugManifest UP-TO-DATE
+> Task :flutter_plugin_android_lifecycle:extractDeepLinksDebug UP-TO-DATE
+> Task :flutter_plugin_android_lifecycle:processDebugManifest UP-TO-DATE
+> Task :flutter_screen_recording:extractDeepLinksDebug UP-TO-DATE
+> Task :flutter_screen_recording:processDebugManifest UP-TO-DATE
+> Task :gal:extractDeepLinksDebug UP-TO-DATE
+> Task :gal:processDebugManifest UP-TO-DATE
+> Task :geocoding_android:extractDeepLinksDebug UP-TO-DATE
+> Task :geocoding_android:processDebugManifest UP-TO-DATE
+> Task :geolocator_android:extractDeepLinksDebug UP-TO-DATE
+> Task :geolocator_android:processDebugManifest UP-TO-DATE
+> Task :image_picker_android:extractDeepLinksDebug UP-TO-DATE
+> Task :image_picker_android:processDebugManifest UP-TO-DATE
+> Task :path_provider_android:extractDeepLinksDebug UP-TO-DATE
+> Task :path_provider_android:processDebugManifest UP-TO-DATE
+> Task :permission_handler_android:extractDeepLinksDebug UP-TO-DATE
+> Task :permission_handler_android:processDebugManifest UP-TO-DATE
+> Task :shared_preferences_android:extractDeepLinksDebug UP-TO-DATE
+> Task :shared_preferences_android:processDebugManifest UP-TO-DATE
+> Task :app:processDebugMainManifest UP-TO-DATE
+> Task :app:outputDebugAppLinkSettings UP-TO-DATE
+> Task :app:processDebugManifest UP-TO-DATE
+> Task :app:processDebugManifestForPackage UP-TO-DATE
+> Task :ar_flutter_plugin:compileDebugLibraryResources UP-TO-DATE
+> Task :ar_flutter_plugin:parseDebugLocalResources UP-TO-DATE
+> Task :ar_flutter_plugin:generateDebugRFile UP-TO-DATE
+> Task :camera_android_camerax:compileDebugLibraryResources UP-TO-DATE
+> Task :camera_android_camerax:parseDebugLocalResources UP-TO-DATE
+> Task :camera_android_camerax:generateDebugRFile UP-TO-DATE
+> Task :flutter_foreground_task:compileDebugLibraryResources UP-TO-DATE
+> Task :flutter_foreground_task:parseDebugLocalResources UP-TO-DATE
+> Task :flutter_foreground_task:generateDebugRFile UP-TO-DATE
+> Task :flutter_plugin_android_lifecycle:compileDebugLibraryResources UP-TO-DATE
+> Task :flutter_plugin_android_lifecycle:parseDebugLocalResources UP-TO-DATE
+> Task :flutter_plugin_android_lifecycle:generateDebugRFile UP-TO-DATE
+> Task :flutter_screen_recording:compileDebugLibraryResources UP-TO-DATE
+> Task :flutter_screen_recording:parseDebugLocalResources UP-TO-DATE
+> Task :flutter_screen_recording:generateDebugRFile UP-TO-DATE
+> Task :gal:compileDebugLibraryResources UP-TO-DATE
+> Task :gal:parseDebugLocalResources UP-TO-DATE
+> Task :gal:generateDebugRFile UP-TO-DATE
+> Task :geocoding_android:compileDebugLibraryResources UP-TO-DATE
+> Task :geocoding_android:parseDebugLocalResources UP-TO-DATE
+> Task :geocoding_android:generateDebugRFile UP-TO-DATE
+> Task :geolocator_android:compileDebugLibraryResources UP-TO-DATE
+> Task :geolocator_android:parseDebugLocalResources UP-TO-DATE
+> Task :geolocator_android:generateDebugRFile UP-TO-DATE
+> Task :image_picker_android:compileDebugLibraryResources UP-TO-DATE
+> Task :image_picker_android:parseDebugLocalResources UP-TO-DATE
+> Task :image_picker_android:generateDebugRFile UP-TO-DATE
+> Task :path_provider_android:compileDebugLibraryResources UP-TO-DATE
+> Task :path_provider_android:parseDebugLocalResources UP-TO-DATE
+> Task :path_provider_android:generateDebugRFile UP-TO-DATE
+> Task :permission_handler_android:compileDebugLibraryResources UP-TO-DATE
+> Task :permission_handler_android:parseDebugLocalResources UP-TO-DATE
+> Task :permission_handler_android:generateDebugRFile UP-TO-DATE
+> Task :shared_preferences_android:compileDebugLibraryResources UP-TO-DATE
+> Task :shared_preferences_android:parseDebugLocalResources UP-TO-DATE
+> Task :shared_preferences_android:generateDebugRFile UP-TO-DATE
+> Task :app:processDebugResources UP-TO-DATE
+> Task :ar_flutter_plugin:checkKotlinGradlePluginConfigurationErrors SKIPPED
+> Task :ar_flutter_plugin:javaPreCompileDebug UP-TO-DATE
+> Task :camera_android_camerax:checkKotlinGradlePluginConfigurationErrors SKIPPED
+> Task :camera_android_camerax:javaPreCompileDebug UP-TO-DATE
+> Task :flutter_foreground_task:checkKotlinGradlePluginConfigurationErrors SKIPPED
+> Task :flutter_foreground_task:javaPreCompileDebug UP-TO-DATE
+> Task :flutter_plugin_android_lifecycle:javaPreCompileDebug UP-TO-DATE
+> Task :flutter_plugin_android_lifecycle:compileDebugJavaWithJavac
+> Task :flutter_plugin_android_lifecycle:bundleLibCompileToJarDebug UP-TO-DATE
+> Task :flutter_screen_recording:checkKotlinGradlePluginConfigurationErrors SKIPPED
+> Task :flutter_screen_recording:javaPreCompileDebug UP-TO-DATE
+> Task :gal:javaPreCompileDebug UP-TO-DATE
+> Task :gal:compileDebugJavaWithJavac
+> Task :geocoding_android:javaPreCompileDebug UP-TO-DATE
+> Task :gal:bundleLibCompileToJarDebug
+> Task :geocoding_android:compileDebugJavaWithJavac
+> Task :geolocator_android:javaPreCompileDebug UP-TO-DATE
+> Task :geocoding_android:bundleLibCompileToJarDebug
+> Task :geolocator_android:compileDebugJavaWithJavac
+> Task :image_picker_android:javaPreCompileDebug UP-TO-DATE
+> Task :geolocator_android:bundleLibCompileToJarDebug
+> Task :image_picker_android:compileDebugJavaWithJavac
+> Task :path_provider_android:javaPreCompileDebug UP-TO-DATE
+> Task :image_picker_android:bundleLibCompileToJarDebug
+> Task :path_provider_android:compileDebugJavaWithJavac
+> Task :permission_handler_android:javaPreCompileDebug UP-TO-DATE
+> Task :path_provider_android:bundleLibCompileToJarDebug
+
+> Task :ar_flutter_plugin:compileDebugKotlin
+w: file:///C:/Users/91767/journey-1_updated/demo_flutter_app/plugins/ar_flutter_plugin/android/src/main/kotlin/io/carius/lars/ar_flutter_plugin/AndroidARView.kt:166:83 Unchecked cast of 'Any!' to 'HashMap<String, Any>'.
+w: file:///C:/Users/91767/journey-1_updated/demo_flutter_app/plugins/ar_flutter_plugin/android/src/main/kotlin/io/carius/lars/ar_flutter_plugin/AndroidARView.kt:674:198 Unchecked cast of 'Any?' to 'ArrayList<Double>'.
+w: file:///C:/Users/91767/journey-1_updated/demo_flutter_app/plugins/ar_flutter_plugin/android/src/main/kotlin/io/carius/lars/ar_flutter_plugin/AndroidARView.kt:702:220 Unchecked cast of 'Any?' to 'ArrayList<Double>'.
+w: file:///C:/Users/91767/journey-1_updated/demo_flutter_app/plugins/ar_flutter_plugin/android/src/main/kotlin/io/carius/lars/ar_flutter_plugin/AndroidARView.kt:733:213 Unchecked cast of 'Any?' to 'ArrayList<Double>'.
+w: file:///C:/Users/91767/journey-1_updated/demo_flutter_app/plugins/ar_flutter_plugin/android/src/main/kotlin/io/carius/lars/ar_flutter_plugin/AndroidARView.kt:766:204 Unchecked cast of 'Any?' to 'ArrayList<Double>'.
+w: file:///C:/Users/91767/journey-1_updated/demo_flutter_app/plugins/ar_flutter_plugin/android/src/main/kotlin/io/carius/lars/ar_flutter_plugin/AndroidARViewFactory.kt:13:35 Unchecked cast of 'Any?' to 'Map<String?, Any?>?'.
+
+> Task :permission_handler_android:compileDebugJavaWithJavac
+> Task :ar_flutter_plugin:compileDebugJavaWithJavac NO-SOURCE
+> Task :ar_flutter_plugin:bundleLibCompileToJarDebug UP-TO-DATE
+> Task :shared_preferences_android:checkKotlinGradlePluginConfigurationErrors SKIPPED
+> Task :permission_handler_android:bundleLibCompileToJarDebug
+> Task :shared_preferences_android:javaPreCompileDebug UP-TO-DATE
+> Task :app:javaPreCompileDebug UP-TO-DATE
+> Task :ar_flutter_plugin:bundleLibRuntimeToJarDebug UP-TO-DATE
+> Task :flutter_plugin_android_lifecycle:bundleLibRuntimeToJarDebug UP-TO-DATE
+> Task :gal:bundleLibRuntimeToJarDebug
+> Task :geocoding_android:bundleLibRuntimeToJarDebug
+
+> Task :flutter_foreground_task:compileDebugKotlin
+w: file:///C:/Users/91767/AppData/Local/Pub/Cache/hosted/pub.dev/flutter_foreground_task-9.2.1/android/src/main/kotlin/com/pravera/flutter_foreground_task/service/ForegroundService.kt:298:9 'fun stopForeground(p0: Boolean): Unit' is deprecated. Deprecated in Java.
+w: file:///C:/Users/91767/AppData/Local/Pub/Cache/hosted/pub.dev/flutter_foreground_task-9.2.1/android/src/main/kotlin/com/pravera/flutter_foreground_task/service/ForegroundService.kt:441:48 'static field WIFI_MODE_FULL_HIGH_PERF: Int' is deprecated. Deprecated in Java.
+w: file:///C:/Users/91767/AppData/Local/Pub/Cache/hosted/pub.dev/flutter_foreground_task-9.2.1/android/src/main/kotlin/com/pravera/flutter_foreground_task/service/ForegroundService.kt:584:37 'constructor(p0: Int, p1: CharSequence!, p2: PendingIntent?): Notification.Action.Builder' is deprecated. Deprecated in Java.
+w: file:///C:/Users/91767/AppData/Local/Pub/Cache/hosted/pub.dev/flutter_foreground_task-9.2.1/android/src/main/kotlin/com/pravera/flutter_foreground_task/service/RestartReceiver.kt:72:34 'fun getRunningServices(p0: Int): (Mutable)List<ActivityManager.RunningServiceInfo!>!' is deprecated. Deprecated in Java.
+w: file:///C:/Users/91767/AppData/Local/Pub/Cache/hosted/pub.dev/flutter_foreground_task-9.2.1/android/src/main/kotlin/com/pravera/flutter_foreground_task/utils/PluginUtils.kt:75:74 'static field FLAG_SHOW_WHEN_LOCKED: Int' is deprecated. Deprecated in Java.
+w: file:///C:/Users/91767/AppData/Local/Pub/Cache/hosted/pub.dev/flutter_foreground_task-9.2.1/android/src/main/kotlin/com/pravera/flutter_foreground_task/utils/PluginUtils.kt:77:76 'static field FLAG_SHOW_WHEN_LOCKED: Int' is deprecated. Deprecated in Java.
+w: file:///C:/Users/91767/AppData/Local/Pub/Cache/hosted/pub.dev/flutter_foreground_task-9.2.1/android/src/main/kotlin/com/pravera/flutter_foreground_task/utils/PluginUtils.kt:85:44 'static field SCREEN_BRIGHT_WAKE_LOCK: Int' is deprecated. Deprecated in Java.
+w: file:///C:/Users/91767/AppData/Local/Pub/Cache/hosted/pub.dev/flutter_foreground_task-9.2.1/android/src/main/kotlin/com/pravera/flutter_foreground_task/utils/PluginUtils.kt:86:38 'static field ACQUIRE_CAUSES_WAKEUP: Int' is deprecated. Deprecated in Java.
+
+> Task :geolocator_android:bundleLibRuntimeToJarDebug
+> Task :image_picker_android:bundleLibRuntimeToJarDebug
+> Task :flutter_foreground_task:compileDebugJavaWithJavac NO-SOURCE
+> Task :flutter_foreground_task:bundleLibCompileToJarDebug UP-TO-DATE
+> Task :app:compressDebugAssets
+> Task :flutter_foreground_task:bundleLibRuntimeToJarDebug UP-TO-DATE
+> Task :path_provider_android:bundleLibRuntimeToJarDebug
+
+> Task :flutter_screen_recording:compileDebugKotlin
+w: file:///C:/Users/91767/AppData/Local/Pub/Cache/hosted/pub.dev/flutter_screen_recording-2.0.24/android/src/main/kotlin/com/isvisoft/flutter_screen_recording/FlutterScreenRecordingPlugin.kt:133:34 'fun getRealMetrics(p0: DisplayMetrics!): Unit' is deprecated. Deprecated in Java.
+w: file:///C:/Users/91767/AppData/Local/Pub/Cache/hosted/pub.dev/flutter_screen_recording-2.0.24/android/src/main/kotlin/com/isvisoft/flutter_screen_recording/FlutterScreenRecordingPlugin.kt:137:41 'fun getMetrics(p0: DisplayMetrics!): Unit' is deprecated. Deprecated in Java.
+w: file:///C:/Users/91767/AppData/Local/Pub/Cache/hosted/pub.dev/flutter_screen_recording-2.0.24/android/src/main/kotlin/com/isvisoft/flutter_screen_recording/FlutterScreenRecordingPlugin.kt:186:21 'field scaledDensity: Float' is deprecated. Deprecated in Java.
+w: file:///C:/Users/91767/AppData/Local/Pub/Cache/hosted/pub.dev/flutter_screen_recording-2.0.24/android/src/main/kotlin/com/isvisoft/flutter_screen_recording/FlutterScreenRecordingPlugin.kt:209:25 'field scaledDensity: Float' is deprecated. Deprecated in Java.
+
+> Task :flutter_screen_recording:compileDebugJavaWithJavac NO-SOURCE
+> Task :flutter_screen_recording:bundleLibCompileToJarDebug
+> Task :flutter_screen_recording:bundleLibRuntimeToJarDebug
+> Task :permission_handler_android:bundleLibRuntimeToJarDebug
+> Task :app:desugarDebugFileDependencies UP-TO-DATE
+> Task :ar_flutter_plugin:processDebugJavaRes
+> Task :flutter_foreground_task:processDebugJavaRes
+> Task :flutter_plugin_android_lifecycle:processDebugJavaRes NO-SOURCE
+> Task :flutter_screen_recording:processDebugJavaRes
+> Task :gal:processDebugJavaRes NO-SOURCE
+> Task :geocoding_android:processDebugJavaRes NO-SOURCE
+> Task :geolocator_android:processDebugJavaRes NO-SOURCE
+> Task :image_picker_android:processDebugJavaRes NO-SOURCE
+> Task :path_provider_android:processDebugJavaRes NO-SOURCE
+> Task :permission_handler_android:processDebugJavaRes NO-SOURCE
+> Task :camera_android_camerax:compileDebugKotlin
+> Task :shared_preferences_android:compileDebugKotlin
+> Task :app:checkDebugDuplicateClasses
+> Task :app:checkDebugDuplicateClasses FAILED
+> Task :camera_android_camerax:compileDebugJavaWithJavac
+
+[Incubating] Problems report is available at: file:///C:/Users/91767/journey-1_updated/demo_flutter_app/build/reports/problems/problems-report.html
+.\gradlew : 
+At line:1 char:1
++ .\gradlew assembleDebug --stacktrace > 
+build_log_v9.txt 2>&1
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified 
+   : (:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeComman 
+   dError
+ 
+FAILURE: Build failed with an exception.
+
+* What went wrong:
+Execution failed for task 
+':app:checkDebugDuplicateClasses'.
+> A failure occurred while executing com.an
+droid.build.gradle.internal.tasks.CheckDupl
+icatesRunnable
+   > Duplicate class android.support.v4.app
+.INotificationSideChannel found in modules 
+core-1.17.0.aar -> core-1.17.0-runtime 
+(androidx.core:core:1.17.0) and 
+support-compat-27.1.0.aar -> 
+support-compat-27.1.0-runtime 
+(com.android.support:support-compat:27.1.0)
+     Duplicate class android.support.v4.app
+.INotificationSideChannel$Stub found in 
+modules core-1.17.0.aar -> 
+core-1.17.0-runtime 
+(androidx.core:core:1.17.0) and 
+support-compat-27.1.0.aar -> 
+support-compat-27.1.0-runtime 
+(com.android.support:support-compat:27.1.0)
+     Duplicate class android.support.v4.app
+.INotificationSideChannel$Stub$Proxy found 
+in modules core-1.17.0.aar -> 
+core-1.17.0-runtime 
+(androidx.core:core:1.17.0) and 
+support-compat-27.1.0.aar -> 
+support-compat-27.1.0-runtime 
+(com.android.support:support-compat:27.1.0)
+     Duplicate class 
+android.support.v4.os.IResultReceiver 
+found in modules core-1.17.0.aar -> 
+core-1.17.0-runtime 
+(androidx.core:core:1.17.0) and 
+support-compat-27.1.0.aar -> 
+support-compat-27.1.0-runtime 
+(com.android.support:support-compat:27.1.0)
+     Duplicate class 
+android.support.v4.os.IResultReceiver$Stub 
+found in modules core-1.17.0.aar -> 
+core-1.17.0-runtime 
+(androidx.core:core:1.17.0) and 
+support-compat-27.1.0.aar -> 
+support-compat-27.1.0-runtime 
+(com.android.support:support-compat:27.1.0)
+     Duplicate class android.support.v4.os.
+IResultReceiver$Stub$Proxy found in 
+modules core-1.17.0.aar -> 
+core-1.17.0-runtime 
+(androidx.core:core:1.17.0) and 
+support-compat-27.1.0.aar -> 
+support-compat-27.1.0-runtime 
+(com.android.support:support-compat:27.1.0)
+     Duplicate class 
+android.support.v4.os.ResultReceiver found 
+in modules core-1.17.0.aar -> 
+core-1.17.0-runtime 
+(androidx.core:core:1.17.0) and 
+support-compat-27.1.0.aar -> 
+support-compat-27.1.0-runtime 
+(com.android.support:support-compat:27.1.0)
+     Duplicate class 
+android.support.v4.os.ResultReceiver$1 
+found in modules core-1.17.0.aar -> 
+core-1.17.0-runtime 
+(androidx.core:core:1.17.0) and 
+support-compat-27.1.0.aar -> 
+support-compat-27.1.0-runtime 
+(com.android.support:support-compat:27.1.0)
+     Duplicate class android.support.v4.os.
+ResultReceiver$MyResultReceiver found in 
+modules core-1.17.0.aar -> 
+core-1.17.0-runtime 
+(androidx.core:core:1.17.0) and 
+support-compat-27.1.0.aar -> 
+support-compat-27.1.0-runtime 
+(com.android.support:support-compat:27.1.0)
+     Duplicate class android.support.v4.os.
+ResultReceiver$MyRunnable found in modules 
+core-1.17.0.aar -> core-1.17.0-runtime 
+(androidx.core:core:1.17.0) and 
+support-compat-27.1.0.aar -> 
+support-compat-27.1.0-runtime 
+(com.android.support:support-compat:27.1.0)
+     
+     Learn how to fix dependency 
+resolution errors at https://d.android.com/
+r/tools/classpath-sync-errors
+
+* Try:
+> Run with --info or --debug option to get 
+more log output.
+> Run with --scan to get full insights.
+> Get more help at https://help.gradle.org.
+
+* Exception is:
+org.gradle.api.tasks.TaskExecutionException
+: Execution failed for task 
+':app:checkDebugDuplicateClasses'.
+	at org.gradle.api.internal.tasks.execution
+.ExecuteActionsTaskExecuter.lambda$executeI
+fValid$1(ExecuteActionsTaskExecuter.java:13
+0)
+	at org.gradle.internal.Try$Failure.ifSucce
+ssfulOrElse(Try.java:293)
+	at org.gradle.api.internal.tasks.execution
+.ExecuteActionsTaskExecuter.executeIfValid(
+ExecuteActionsTaskExecuter.java:128)
+	at org.gradle.api.internal.tasks.execution
+.ExecuteActionsTaskExecuter.execute(Execute
+ActionsTaskExecuter.java:116)
+	at org.gradle.api.internal.tasks.execution
+.ProblemsTaskPathTrackingTaskExecuter.execu
+te(ProblemsTaskPathTrackingTaskExecuter.jav
+a:41)
+	at org.gradle.api.internal.tasks.execution
+.FinalizePropertiesTaskExecuter.execute(Fin
+alizePropertiesTaskExecuter.java:46)
+	at org.gradle.api.internal.tasks.execution
+.ResolveTaskExecutionModeExecuter.execute(R
+esolveTaskExecutionModeExecuter.java:51)
+	at org.gradle.api.internal.tasks.execution
+.SkipTaskWithNoActionsExecuter.execute(Skip
+TaskWithNoActionsExecuter.java:57)
+	at org.gradle.api.internal.tasks.execution
+.SkipOnlyIfTaskExecuter.execute(SkipOnlyIfT
+askExecuter.java:74)
+	at org.gradle.api.internal.tasks.execution
+.CatchExceptionTaskExecuter.execute(CatchEx
+ceptionTaskExecuter.java:36)
+	at org.gradle.api.internal.tasks.execution
+.EventFiringTaskExecuter$1.executeTask(Even
+tFiringTaskExecuter.java:77)
+	at org.gradle.api.internal.tasks.execution
+.EventFiringTaskExecuter$1.call(EventFiring
+TaskExecuter.java:55)
+	at org.gradle.api.internal.tasks.execution
+.EventFiringTaskExecuter$1.call(EventFiring
+TaskExecuter.java:52)
+	at org.gradle.internal.operations.DefaultB
+uildOperationRunner$CallableBuildOperationW
+orker.execute(DefaultBuildOperationRunner.j
+ava:210)
+	at org.gradle.internal.operations.DefaultB
+uildOperationRunner$CallableBuildOperationW
+orker.execute(DefaultBuildOperationRunner.j
+ava:205)
+	at org.gradle.internal.operations.DefaultB
+uildOperationRunner$2.execute(DefaultBuildO
+perationRunner.java:67)
+	at org.gradle.internal.operations.DefaultB
+uildOperationRunner$2.execute(DefaultBuildO
+perationRunner.java:60)
+	at org.gradle.internal.operations.DefaultB
+uildOperationRunner.execute(DefaultBuildOpe
+rationRunner.java:167)
+	at org.gradle.internal.operations.DefaultB
+uildOperationRunner.execute(DefaultBuildOpe
+rationRunner.java:60)
+	at org.gradle.internal.operations.DefaultB
+uildOperationRunner.call(DefaultBuildOperat
+ionRunner.java:54)
+	at org.gradle.api.internal.tasks.execution
+.EventFiringTaskExecuter.execute(EventFirin
+gTaskExecuter.java:52)
+	at org.gradle.execution.plan.LocalTaskNode
+Executor.execute(LocalTaskNodeExecutor.java
+:42)
+	at org.gradle.execution.taskgraph.DefaultT
+askExecutionGraph$InvokeNodeExecutorsAction
+.execute(DefaultTaskExecutionGraph.java:331
+)
+	at org.gradle.execution.taskgraph.DefaultT
+askExecutionGraph$InvokeNodeExecutorsAction
+.execute(DefaultTaskExecutionGraph.java:318
+)
+	at org.gradle.execution.taskgraph.DefaultT
+askExecutionGraph$BuildOperationAwareExecut
+ionAction.lambda$execute$0(DefaultTaskExecu
+tionGraph.java:314)
+	at org.gradle.internal.operations.CurrentB
+uildOperationRef.with(CurrentBuildOperation
+Ref.java:85)
+	at org.gradle.execution.taskgraph.DefaultT
+askExecutionGraph$BuildOperationAwareExecut
+ionAction.execute(DefaultTaskExecutionGraph
+.java:314)
+	at org.gradle.execution.taskgraph.DefaultT
+askExecutionGraph$BuildOperationAwareExecut
+ionAction.execute(DefaultTaskExecutionGraph
+.java:303)
+	at org.gradle.execution.plan.DefaultPlanEx
+ecutor$ExecutorWorker.execute(DefaultPlanEx
+ecutor.java:459)
+	at org.gradle.execution.plan.DefaultPlanEx
+ecutor$ExecutorWorker.run(DefaultPlanExecut
+or.java:376)
+	at org.gradle.internal.concurrent.Executor
+Policy$CatchAndRecordFailures.onExecute(Exe
+cutorPolicy.java:64)
+	at org.gradle.internal.concurrent.Abstract
+ManagedExecutor$1.run(AbstractManagedExecut
+or.java:48)
+Caused by: org.gradle.workers.internal.Defa
+ultWorkerExecutor$WorkExecutionException: 
+A failure occurred while executing com.andr
+oid.build.gradle.internal.tasks.CheckDuplic
+atesRunnable
+	at org.gradle.workers.internal.DefaultWork
+erExecutor$WorkItemExecution.waitForComplet
+ion(DefaultWorkerExecutor.java:287)
+	at org.gradle.internal.work.DefaultAsyncWo
+rkTracker.lambda$waitForItemsAndGatherFailu
+res$2(DefaultAsyncWorkTracker.java:130)
+	at org.gradle.internal.Factories$1.create(
+Factories.java:31)
+	at org.gradle.internal.work.DefaultWorkerL
+easeService.withoutLocks(DefaultWorkerLease
+Service.java:335)
+	at org.gradle.internal.work.DefaultWorkerL
+easeService.withoutLocks(DefaultWorkerLease
+Service.java:318)
+	at org.gradle.internal.work.DefaultWorkerL
+easeService.withoutLock(DefaultWorkerLeaseS
+ervice.java:323)
+	at org.gradle.internal.work.DefaultAsyncWo
+rkTracker.waitForItemsAndGatherFailures(Def
+aultAsyncWorkTracker.java:126)
+	at org.gradle.internal.work.DefaultAsyncWo
+rkTracker.waitForItemsAndGatherFailures(Def
+aultAsyncWorkTracker.java:92)
+	at org.gradle.internal.work.DefaultAsyncWo
+rkTracker.waitForAll(DefaultAsyncWorkTracke
+r.java:78)
+	at org.gradle.internal.work.DefaultAsyncWo
+rkTracker.waitForCompletion(DefaultAsyncWor
+kTracker.java:66)
+	at org.gradle.api.internal.tasks.execution
+.TaskExecution$3.run(TaskExecution.java:252
+)
+	at org.gradle.internal.operations.DefaultB
+uildOperationRunner$1.execute(DefaultBuildO
+perationRunner.java:30)
+	at org.gradle.internal.operations.DefaultB
+uildOperationRunner$1.execute(DefaultBuildO
+perationRunner.java:27)
+	at org.gradle.internal.operations.DefaultB
+uildOperationRunner$2.execute(DefaultBuildO
+perationRunner.java:67)
+	at org.gradle.internal.operations.DefaultB
+uildOperationRunner$2.execute(DefaultBuildO
+perationRunner.java:60)
+	at org.gradle.internal.operations.DefaultB
+uildOperationRunner.execute(DefaultBuildOpe
+rationRunner.java:167)
+	at org.gradle.internal.operations.DefaultB
+uildOperationRunner.execute(DefaultBuildOpe
+rationRunner.java:60)
+	at org.gradle.internal.operations.DefaultB
+uildOperationRunner.run(DefaultBuildOperati
+onRunner.java:48)
+	at org.gradle.api.internal.tasks.execution
+.TaskExecution.executeAction(TaskExecution.
+java:229)
+	at org.gradle.api.internal.tasks.execution
+.TaskExecution.executeActions(TaskExecution
+.java:212)
+	at org.gradle.api.internal.tasks.execution
+.TaskExecution.executeWithPreviousOutputFil
+es(TaskExecution.java:195)
+	at org.gradle.api.internal.tasks.execution
+.TaskExecution.execute(TaskExecution.java:1
+62)
+	at org.gradle.internal.execution.steps.Exe
+cuteStep.executeInternal(ExecuteStep.java:1
+05)
+	at org.gradle.internal.execution.steps.Exe
+cuteStep.access$000(ExecuteStep.java:44)
+	at org.gradle.internal.execution.steps.Exe
+cuteStep$1.call(ExecuteStep.java:59)
+	at org.gradle.internal.execution.steps.Exe
+cuteStep$1.call(ExecuteStep.java:56)
+	at org.gradle.internal.operations.DefaultB
+uildOperationRunner$CallableBuildOperationW
+orker.execute(DefaultBuildOperationRunner.j
+ava:210)
+	at org.gradle.internal.operations.DefaultB
+uildOperationRunner$CallableBuildOperationW
+orker.execute(DefaultBuildOperationRunner.j
+ava:205)
+	at org.gradle.internal.operations.DefaultB
+uildOperationRunner$2.execute(DefaultBuildO
+perationRunner.java:67)
+	at org.gradle.internal.operations.DefaultB
+uildOperationRunner$2.execute(DefaultBuildO
+perationRunner.java:60)
+	at org.gradle.internal.operations.DefaultB
+uildOperationRunner.execute(DefaultBuildOpe
+rationRunner.java:167)
+	at org.gradle.internal.operations.DefaultB
+uildOperationRunner.execute(DefaultBuildOpe
+rationRunner.java:60)
+	at org.gradle.internal.operations.DefaultB
+uildOperationRunner.call(DefaultBuildOperat
+ionRunner.java:54)
+	at org.gradle.internal.execution.steps.Exe
+cuteStep.execute(ExecuteStep.java:56)
+	at org.gradle.internal.execution.steps.Exe
+cuteStep.execute(ExecuteStep.java:44)
+	at org.gradle.internal.execution.steps.Can
+celExecutionStep.execute(CancelExecutionSte
+p.java:42)
+	at org.gradle.internal.execution.steps.Tim
+eoutStep.executeWithoutTimeout(TimeoutStep.
+java:75)
+	at org.gradle.internal.execution.steps.Tim
+eoutStep.execute(TimeoutStep.java:55)
+	at org.gradle.internal.execution.steps.Pre
+CreateOutputParentsStep.execute(PreCreateOu
+tputParentsStep.java:50)
+	at org.gradle.internal.execution.steps.Pre
+CreateOutputParentsStep.execute(PreCreateOu
+tputParentsStep.java:28)
+	at org.gradle.internal.execution.steps.Rem
+ovePreviousOutputsStep.execute(RemovePrevio
+usOutputsStep.java:67)
+	at org.gradle.internal.execution.steps.Rem
+ovePreviousOutputsStep.execute(RemovePrevio
+usOutputsStep.java:37)
+	at org.gradle.internal.execution.steps.Bro
+adcastChangingOutputsStep.execute(Broadcast
+ChangingOutputsStep.java:61)
+	at org.gradle.internal.execution.steps.Bro
+adcastChangingOutputsStep.execute(Broadcast
+ChangingOutputsStep.java:26)
+	at org.gradle.internal.execution.steps.Cap
+tureOutputsAfterExecutionStep.execute(Captu
+reOutputsAfterExecutionStep.java:69)
+	at org.gradle.internal.execution.steps.Cap
+tureOutputsAfterExecutionStep.execute(Captu
+reOutputsAfterExecutionStep.java:46)
+	at org.gradle.internal.execution.steps.Res
+olveInputChangesStep.execute(ResolveInputCh
+angesStep.java:40)
+	at org.gradle.internal.execution.steps.Res
+olveInputChangesStep.execute(ResolveInputCh
+angesStep.java:29)
+	at org.gradle.internal.execution.steps.Bui
+ldCacheStep.executeWithoutCache(BuildCacheS
+tep.java:189)
+	at org.gradle.internal.execution.steps.Bui
+ldCacheStep.lambda$execute$1(BuildCacheStep
+.java:75)
+	at org.gradle.internal.Either$Right.fold(E
+ither.java:175)
+	at org.gradle.internal.execution.caching.C
+achingState.fold(CachingState.java:62)
+	at org.gradle.internal.execution.steps.Bui
+ldCacheStep.execute(BuildCacheStep.java:73)
+	at org.gradle.internal.execution.steps.Bui
+ldCacheStep.execute(BuildCacheStep.java:48)
+	at org.gradle.internal.execution.steps.Sto
+reExecutionStateStep.execute(StoreExecution
+StateStep.java:46)
+	at org.gradle.internal.execution.steps.Sto
+reExecutionStateStep.execute(StoreExecution
+StateStep.java:35)
+	at org.gradle.internal.execution.steps.Ski
+pUpToDateStep.executeBecause(SkipUpToDateSt
+ep.java:75)
+	at org.gradle.internal.execution.steps.Ski
+pUpToDateStep.lambda$execute$2(SkipUpToDate
+Step.java:53)
+	at org.gradle.internal.execution.steps.Ski
+pUpToDateStep.execute(SkipUpToDateStep.java
+:53)
+	at org.gradle.internal.execution.steps.Ski
+pUpToDateStep.execute(SkipUpToDateStep.java
+:35)
+	at org.gradle.internal.execution.steps.leg
+acy.MarkSnapshottingInputsFinishedStep.exec
+ute(MarkSnapshottingInputsFinishedStep.java
+:37)
+	at org.gradle.internal.execution.steps.leg
+acy.MarkSnapshottingInputsFinishedStep.exec
+ute(MarkSnapshottingInputsFinishedStep.java
+:27)
+	at org.gradle.internal.execution.steps.Res
+olveIncrementalCachingStateStep.executeDele
+gate(ResolveIncrementalCachingStateStep.jav
+a:49)
+	at org.gradle.internal.execution.steps.Res
+olveIncrementalCachingStateStep.executeDele
+gate(ResolveIncrementalCachingStateStep.jav
+a:27)
+	at org.gradle.internal.execution.steps.Abs
+tractResolveCachingStateStep.execute(Abstra
+ctResolveCachingStateStep.java:71)
+	at org.gradle.internal.execution.steps.Abs
+tractResolveCachingStateStep.execute(Abstra
+ctResolveCachingStateStep.java:39)
+	at org.gradle.internal.execution.steps.Res
+olveChangesStep.execute(ResolveChangesStep.
+java:65)
+	at org.gradle.internal.execution.steps.Res
+olveChangesStep.execute(ResolveChangesStep.
+java:36)
+	at org.gradle.internal.execution.steps.Val
+idateStep.execute(ValidateStep.java:107)
+	at org.gradle.internal.execution.steps.Val
+idateStep.execute(ValidateStep.java:56)
+	at org.gradle.internal.execution.steps.Abs
+tractCaptureStateBeforeExecutionStep.execut
+e(AbstractCaptureStateBeforeExecutionStep.j
+ava:64)
+	at org.gradle.internal.execution.steps.Abs
+tractCaptureStateBeforeExecutionStep.execut
+e(AbstractCaptureStateBeforeExecutionStep.j
+ava:43)
+	at org.gradle.internal.execution.steps.Abs
+tractSkipEmptyWorkStep.executeWithNonEmptyS
+ources(AbstractSkipEmptyWorkStep.java:125)
+	at org.gradle.internal.execution.steps.Abs
+tractSkipEmptyWorkStep.execute(AbstractSkip
+EmptyWorkStep.java:56)
+	at org.gradle.internal.execution.steps.Abs
+tractSkipEmptyWorkStep.execute(AbstractSkip
+EmptyWorkStep.java:36)
+	at org.gradle.internal.execution.steps.leg
+acy.MarkSnapshottingInputsStartedStep.execu
+te(MarkSnapshottingInputsStartedStep.java:3
+8)
+	at org.gradle.internal.execution.steps.Loa
+dPreviousExecutionStateStep.execute(LoadPre
+viousExecutionStateStep.java:36)
+	at org.gradle.internal.execution.steps.Loa
+dPreviousExecutionStateStep.execute(LoadPre
+viousExecutionStateStep.java:23)
+	at org.gradle.internal.execution.steps.Han
+dleStaleOutputsStep.execute(HandleStaleOutp
+utsStep.java:75)
+	at org.gradle.internal.execution.steps.Han
+dleStaleOutputsStep.execute(HandleStaleOutp
+utsStep.java:41)
+	at org.gradle.internal.execution.steps.Ass
+ignMutableWorkspaceStep.lambda$execute$0(As
+signMutableWorkspaceStep.java:35)
+	at org.gradle.api.internal.tasks.execution
+.TaskExecution$4.withWorkspace(TaskExecutio
+n.java:289)
+	at org.gradle.internal.execution.steps.Ass
+ignMutableWorkspaceStep.execute(AssignMutab
+leWorkspaceStep.java:31)
+	at org.gradle.internal.execution.steps.Ass
+ignMutableWorkspaceStep.execute(AssignMutab
+leWorkspaceStep.java:22)
+	at org.gradle.internal.execution.steps.Cho
+osePipelineStep.execute(ChoosePipelineStep.
+java:40)
+	at org.gradle.internal.execution.steps.Cho
+osePipelineStep.execute(ChoosePipelineStep.
+java:23)
+	at org.gradle.internal.execution.steps.Exe
+cuteWorkBuildOperationFiringStep.lambda$exe
+cute$2(ExecuteWorkBuildOperationFiringStep.
+java:67)
+	at org.gradle.internal.execution.steps.Exe
+cuteWorkBuildOperationFiringStep.execute(Ex
+ecuteWorkBuildOperationFiringStep.java:67)
+	at org.gradle.internal.execution.steps.Exe
+cuteWorkBuildOperationFiringStep.execute(Ex
+ecuteWorkBuildOperationFiringStep.java:39)
+	at org.gradle.internal.execution.steps.Ide
+ntityCacheStep.execute(IdentityCacheStep.ja
+va:46)
+	at org.gradle.internal.execution.steps.Ide
+ntityCacheStep.execute(IdentityCacheStep.ja
+va:34)
+	at org.gradle.internal.execution.steps.Ide
+ntifyStep.execute(IdentifyStep.java:48)
+	at org.gradle.internal.execution.steps.Ide
+ntifyStep.execute(IdentifyStep.java:35)
+	at org.gradle.internal.execution.impl.Defa
+ultExecutionEngine$1.execute(DefaultExecuti
+onEngine.java:64)
+	at org.gradle.api.internal.tasks.execution
+.ExecuteActionsTaskExecuter.executeIfValid(
+ExecuteActionsTaskExecuter.java:127)
+	at org.gradle.api.internal.tasks.execution
+.ExecuteActionsTaskExecuter.execute(Execute
+ActionsTaskExecuter.java:116)
+	at org.gradle.api.internal.tasks.execution
+.ProblemsTaskPathTrackingTaskExecuter.execu
+te(ProblemsTaskPathTrackingTaskExecuter.jav
+a:41)
+	at org.gradle.api.internal.tasks.execution
+.FinalizePropertiesTaskExecuter.execute(Fin
+alizePropertiesTaskExecuter.java:46)
+	at org.gradle.api.internal.tasks.execution
+.ResolveTaskExecutionModeExecuter.execute(R
+esolveTaskExecutionModeExecuter.java:51)
+	at org.gradle.api.internal.tasks.execution
+.SkipTaskWithNoActionsExecuter.execute(Skip
+TaskWithNoActionsExecuter.java:57)
+	at org.gradle.api.internal.tasks.execution
+.SkipOnlyIfTaskExecuter.execute(SkipOnlyIfT
+askExecuter.java:74)
+	at org.gradle.api.internal.tasks.execution
+.CatchExceptionTaskExecuter.execute(CatchEx
+ceptionTaskExecuter.java:36)
+	at org.gradle.api.internal.tasks.execution
+.EventFiringTaskExecuter$1.executeTask(Even
+tFiringTaskExecuter.java:77)
+	at org.gradle.api.internal.tasks.execution
+.EventFiringTaskExecuter$1.call(EventFiring
+TaskExecuter.java:55)
+	at org.gradle.api.internal.tasks.execution
+.EventFiringTaskExecuter$1.call(EventFiring
+TaskExecuter.java:52)
+	at org.gradle.internal.operations.DefaultB
+uildOperationRunner$CallableBuildOperationW
+orker.execute(DefaultBuildOperationRunner.j
+ava:210)
+	at org.gradle.internal.operations.DefaultB
+uildOperationRunner$CallableBuildOperationW
+orker.execute(DefaultBuildOperationRunner.j
+ava:205)
+	at org.gradle.internal.operations.DefaultB
+uildOperationRunner$2.execute(DefaultBuildO
+perationRunner.java:67)
+	at org.gradle.internal.operations.DefaultB
+uildOperationRunner$2.execute(DefaultBuildO
+perationRunner.java:60)
+	at org.gradle.internal.operations.DefaultB
+uildOperationRunner.execute(DefaultBuildOpe
+rationRunner.java:167)
+	at org.gradle.internal.operations.DefaultB
+uildOperationRunner.execute(DefaultBuildOpe
+rationRunner.java:60)
+	at org.gradle.internal.operations.DefaultB
+uildOperationRunner.call(DefaultBuildOperat
+ionRunner.java:54)
+
+	at org.gradle.api.internal.tasks.execution
+.EventFiringTaskExecuter.execute(EventFirin
+gTaskExecuter.java:52)
+	at org.gradle.execution.plan.LocalTaskNode
+Executor.execute(LocalTaskNodeExecutor.java
+:42)
+	at org.gradle.execution.taskgraph.DefaultT
+askExecutionGraph$InvokeNodeExecutorsAction
+.execute(DefaultTaskExecutionGraph.java:331
+)
+	at org.gradle.execution.taskgraph.DefaultT
+askExecutionGraph$InvokeNodeExecutorsAction
+.execute(DefaultTaskExecutionGraph.java:318
+)
+	at org.gradle.execution.taskgraph.DefaultT
+askExecutionGraph$BuildOperationAwareExecut
+ionAction.lambda$execute$0(DefaultTaskExecu
+tionGraph.java:314)
+	at org.gradle.internal.operations.CurrentB
+uildOperationRef.with(CurrentBuildOperation
+Ref.java:85)
+	at org.gradle.execution.taskgraph.DefaultT
+askExecutionGraph$BuildOperationAwareExecut
+ionAction.execute(DefaultTaskExecutionGraph
+.java:314)
+	at org.gradle.execution.taskgraph.DefaultT
+askExecutionGraph$BuildOperationAwareExecut
+ionAction.execute(DefaultTaskExecutionGraph
+.java:303)
+	at org.gradle.execution.plan.DefaultPlanEx
+ecutor$ExecutorWorker.execute(DefaultPlanEx
+ecutor.java:459)
+	at org.gradle.execution.plan.DefaultPlanEx
+ecutor$ExecutorWorker.run(DefaultPlanExecut
+or.java:376)
+	at org.gradle.internal.concurrent.Executor
+Policy$CatchAndRecordFailures.onExecute(Exe
+cutorPolicy.java:64)
+	at org.gradle.internal.concurrent.Abstract
+ManagedExecutor$1.run(AbstractManagedExecut
+or.java:48)
+Caused by: java.lang.RuntimeException: 
+Duplicate class android.support.v4.app.INot
+ificationSideChannel found in modules 
+core-1.17.0.aar -> core-1.17.0-runtime 
+(androidx.core:core:1.17.0) and 
+support-compat-27.1.0.aar -> 
+support-compat-27.1.0-runtime 
+(com.android.support:support-compat:27.1.0)
+Duplicate class android.support.v4.app.INot
+ificationSideChannel$Stub found in modules 
+core-1.17.0.aar -> core-1.17.0-runtime 
+(androidx.core:core:1.17.0) and 
+support-compat-27.1.0.aar -> 
+support-compat-27.1.0-runtime 
+(com.android.support:support-compat:27.1.0)
+Duplicate class android.support.v4.app.INot
+ificationSideChannel$Stub$Proxy found in 
+modules core-1.17.0.aar -> 
+core-1.17.0-runtime 
+(androidx.core:core:1.17.0) and 
+support-compat-27.1.0.aar -> 
+support-compat-27.1.0-runtime 
+(com.android.support:support-compat:27.1.0)
+Duplicate class 
+android.support.v4.os.IResultReceiver 
+found in modules core-1.17.0.aar -> 
+core-1.17.0-runtime 
+(androidx.core:core:1.17.0) and 
+support-compat-27.1.0.aar -> 
+support-compat-27.1.0-runtime 
+(com.android.support:support-compat:27.1.0)
+Duplicate class 
+android.support.v4.os.IResultReceiver$Stub 
+found in modules core-1.17.0.aar -> 
+core-1.17.0-runtime 
+(androidx.core:core:1.17.0) and 
+support-compat-27.1.0.aar -> 
+support-compat-27.1.0-runtime 
+(com.android.support:support-compat:27.1.0)
+Duplicate class android.support.v4.os.IResu
+ltReceiver$Stub$Proxy found in modules 
+core-1.17.0.aar -> core-1.17.0-runtime 
+(androidx.core:core:1.17.0) and 
+support-compat-27.1.0.aar -> 
+support-compat-27.1.0-runtime 
+(com.android.support:support-compat:27.1.0)
+Duplicate class 
+android.support.v4.os.ResultReceiver found 
+in modules core-1.17.0.aar -> 
+core-1.17.0-runtime 
+(androidx.core:core:1.17.0) and 
+support-compat-27.1.0.aar -> 
+support-compat-27.1.0-runtime 
+(com.android.support:support-compat:27.1.0)
+Duplicate class 
+android.support.v4.os.ResultReceiver$1 
+found in modules core-1.17.0.aar -> 
+core-1.17.0-runtime 
+(androidx.core:core:1.17.0) and 
+support-compat-27.1.0.aar -> 
+support-compat-27.1.0-runtime 
+(com.android.support:support-compat:27.1.0)
+Duplicate class android.support.v4.os.Resul
+tReceiver$MyResultReceiver found in 
+modules core-1.17.0.aar -> 
+core-1.17.0-runtime 
+(androidx.core:core:1.17.0) and 
+support-compat-27.1.0.aar -> 
+support-compat-27.1.0-runtime 
+(com.android.support:support-compat:27.1.0)
+Duplicate class android.support.v4.os.Resul
+tReceiver$MyRunnable found in modules 
+core-1.17.0.aar -> core-1.17.0-runtime 
+(androidx.core:core:1.17.0) and 
+support-compat-27.1.0.aar -> 
+support-compat-27.1.0-runtime 
+(com.android.support:support-compat:27.1.0)
+
+Learn how to fix dependency resolution 
+errors at https://d.android.com/r/tools/cla
+sspath-sync-errors
+	at com.android.build.gradle.internal.tasks
+.CheckDuplicateClassesDelegate.run(CheckDup
+licateClassesDelegate.kt:65)
+	at com.android.build.gradle.internal.tasks
+.CheckDuplicatesRunnable.execute(CheckDupli
+cateClassesDelegate.kt:91)
+	at org.gradle.workers.internal.DefaultWork
+erServer.execute(DefaultWorkerServer.java:6
+3)
+	at org.gradle.workers.internal.NoIsolation
+WorkerFactory$1$1.create(NoIsolationWorkerF
+actory.java:66)
+Deprecated Gradle features were used in this build, making it incompatible with Gradle 9.0.
+
+You can use '--warning-mode all' to show the individual deprecation warnings and determine if they come from your own scripts or plugins.
+
+For more on this, please refer to https://docs.gradle.org/8.14/userguide/command_line_interface.html#sec:command_line_warnings in the Gradle documentation.
+209 actionable tasks: 41 executed, 168 up-to-date
+	at org.gradle.workers.internal.NoIsolation
+WorkerFactory$1$1.create(NoIsolationWorkerF
+actory.java:62)
+	at org.gradle.internal.classloader.ClassLo
+aderUtils.executeInClassloader(ClassLoaderU
+tils.java:100)
+	at org.gradle.workers.internal.NoIsolation
+WorkerFactory$1.lambda$execute$0(NoIsolatio
+nWorkerFactory.java:62)
+	at org.gradle.workers.internal.AbstractWor
+ker$1.call(AbstractWorker.java:44)
+	at org.gradle.workers.internal.AbstractWor
+ker$1.call(AbstractWorker.java:41)
+	at org.gradle.internal.operations.DefaultB
+uildOperationRunner$CallableBuildOperationW
+orker.execute(DefaultBuildOperationRunner.j
+ava:210)
+	at org.gradle.internal.operations.DefaultB
+uildOperationRunner$CallableBuildOperationW
+orker.execute(DefaultBuildOperationRunner.j
+ava:205)
+	at org.gradle.internal.operations.DefaultB
+uildOperationRunner$2.execute(DefaultBuildO
+perationRunner.java:67)
+	at org.gradle.internal.operations.DefaultB
+uildOperationRunner$2.execute(DefaultBuildO
+perationRunner.java:60)
+	at org.gradle.internal.operations.DefaultB
+uildOperationRunner.execute(DefaultBuildOpe
+rationRunner.java:167)
+	at org.gradle.internal.operations.DefaultB
+uildOperationRunner.execute(DefaultBuildOpe
+rationRunner.java:60)
+	at org.gradle.internal.operations.DefaultB
+uildOperationRunner.call(DefaultBuildOperat
+ionRunner.java:54)
+	at org.gradle.workers.internal.AbstractWor
+ker.executeWrappedInBuildOperation(Abstract
+Worker.java:41)
+	at org.gradle.workers.internal.NoIsolation
+WorkerFactory$1.execute(NoIsolationWorkerFa
+ctory.java:59)
+	at org.gradle.workers.internal.DefaultWork
+erExecutor.lambda$submitWork$0(DefaultWorke
+rExecutor.java:174)
+	at org.gradle.internal.work.DefaultConditi
+onalExecutionQueue$ExecutionRunner.runExecu
+tion(DefaultConditionalExecutionQueue.java:
+194)
+	at org.gradle.internal.work.DefaultConditi
+onalExecutionQueue$ExecutionRunner.access$7
+00(DefaultConditionalExecutionQueue.java:12
+7)
+	at org.gradle.internal.work.DefaultConditi
+onalExecutionQueue$ExecutionRunner$1.run(De
+faultConditionalExecutionQueue.java:169)
+	at org.gradle.internal.Factories$1.create(
+Factories.java:31)
+	at org.gradle.internal.work.DefaultWorkerL
+easeService.withLocks(DefaultWorkerLeaseSer
+vice.java:263)
+	at org.gradle.internal.work.DefaultWorkerL
+easeService.runAsWorkerThread(DefaultWorker
+LeaseService.java:127)
+	at org.gradle.internal.work.DefaultWorkerL
+easeService.runAsWorkerThread(DefaultWorker
+LeaseService.java:132)
+	at org.gradle.internal.work.DefaultConditi
+onalExecutionQueue$ExecutionRunner.runBatch
+(DefaultConditionalExecutionQueue.java:164)
+	at org.gradle.internal.work.DefaultConditi
+onalExecutionQueue$ExecutionRunner.run(Defa
+ultConditionalExecutionQueue.java:133)
+	... 2 more
+
+
+BUILD FAILED in 2m 7s

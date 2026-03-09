@@ -4,7 +4,6 @@
         "builder": "NIXPACKS"
     },
     "deploy": {
-        "rootDirectory": "backend",
-        "startCommand": "daphne -b 0.0.0.0 -p $PORT backend.asgi:application"
+        "startCommand": "cd backend && daphne -b 0.0.0.0 -p $PORT backend.asgi:application"
     }
 }

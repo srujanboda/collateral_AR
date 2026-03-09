@@ -80,3 +80,33 @@ Thank you!
     thread.daemon = True
     thread.start()
     return True
+
+def send_document_upload_success(email, name):
+    subject = "Documents Uploaded Successfully"
+    message = f"""
+Hi {name},
+
+We have successfully received your uploaded documents. 
+
+Our team will review them shortly. We will notify you if any further action is required on your part.
+
+Thank you for your cooperation!
+"""
+    def _send_email():
+        try:
+            send_mail(
+                subject,
+                message,
+                settings.DEFAULT_FROM_EMAIL,
+                [email],
+                fail_silently=False,
+            )
+            return True
+        except Exception as e:
+            print(f"Error sending document success email: {e}")
+            return False
+
+    thread = threading.Thread(target=_send_email)
+    thread.daemon = True
+    thread.start()
+    return True

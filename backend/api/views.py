@@ -148,6 +148,11 @@ class ApplicationCompleteView(APIView):
         success, message = application_service.complete_application(perfios_id)
         
         if success:
+            app_data = application_service.get_application_by_id(perfios_id)
+            if app_data and app_data.get('email'):
+                from . import email_service
+                email_service.send_document_upload_success(app_data['email'], app_data.get('name', 'Applicant'))
+
             return Response({'message': message}, status=status.HTTP_200_OK)
         return Response({'error': message}, status=status.HTTP_404_NOT_FOUND)
 

@@ -37,9 +37,8 @@ const ApplicationsPage: React.FC = () => {
 
     // WebSocket Effect
     useEffect(() => {
-        const wsProtocol = window.location.protocol === 'https:' ? 'wss:' : 'ws:';
-        const wsUrl = `${wsProtocol}//${window.location.hostname}:8000/ws/applicants/`;
-
+        const rawUrl = import.meta.env.VITE_API_URL || 'http://localhost:8000';
+        const wsUrl = rawUrl.replace(/^http/, 'ws') + '/ws/applicants/';
         console.log('Connecting to WebSocket:', wsUrl);
         const socket = new WebSocket(wsUrl);
 

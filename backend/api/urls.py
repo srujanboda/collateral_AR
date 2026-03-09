@@ -1,5 +1,4 @@
 from django.urls import path
-from . import location_views
 from .views import (
     LoginView,
     ApplicationCreateView,
@@ -30,8 +29,6 @@ urlpatterns = [
     path('application/upload-media/', MediaUploadView.as_view(), name='application_upload_media'),
     path('application/<str:perfios_id>/', ApplicationDetailView.as_view(), name='application_detail'),
     
-    # Location
-    path('location/lookup/', location_views.PincodeLookupView.as_view(), name='pincode-lookup'),
     
     # Manage user endpoints
     path('user/list/', UserListView.as_view(), name='user_list'),

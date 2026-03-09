@@ -34,17 +34,6 @@ export const applicationService = {
         }
     },
 
-    // Lookup location by Pincode (Proxy call)
-    lookupPincode: async (pincode: string, country: string = 'IN') => {
-        try {
-            const response = await api.get('/api/location/lookup/', {
-                params: { pincode, country }
-            });
-            return response.data;
-        } catch (error: any) {
-            throw new Error(error.response?.data?.error || 'Failed to lookup pincode');
-        }
-    },
 
     // List all applicants
     list: async () => {

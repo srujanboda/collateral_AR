@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import DialogBox from '../common/DialogBox';
 import Input from '../common/Input';
 import Button from '../common/Button';
@@ -19,8 +19,7 @@ const AddApplicantDialog: React.FC<AddApplicantDialogProps> = ({
 }) => {
     const [isLoading, setIsLoading] = useState(false);
     const [error, setError] = useState<string | null>(null);
-    const [availableCities, setAvailableCities] = useState<string[]>([]);
-    const [isFetchingLocation, setIsFetchingLocation] = useState(false);
+
 
     const [newApplicant, setNewApplicant] = useState({
         name: '',
@@ -34,51 +33,9 @@ const AddApplicantDialog: React.FC<AddApplicantDialogProps> = ({
         country: 'IN' // Default to India
     });
 
-    // 📍 Pincode Auto-Fetch Logic
-    useEffect(() => {
-        if (newApplicant.pincode.length >= 5) {
-            fetchLocation(newApplicant.pincode);
-        } else {
-            setAvailableCities([]);
-            setNewApplicant(prev => ({
-                ...prev,
-                city: '',
-                state: '',
-                district: ''
-            }));
-        }
-    }, [newApplicant.pincode]);
-
-    const fetchLocation = async (pincode: string) => {
-        setIsFetchingLocation(true);
-        setError(null);
-        try {
-            const response = await applicationService.lookupPincode(pincode, newApplicant.country);
-
-            if (response.status === 'Success') {
-                const { state, district, cities } = response.data;
-
-                setAvailableCities(cities);
-                setNewApplicant(prev => ({
-                    ...prev,
-                    state: state,
-                    district: district,
-                    city: cities.length === 1 ? cities[0] : ''
-                }));
-            }
-        } catch (err: any) {
-            console.error('Failed to fetch pincode details:', err);
-            if (pincode.length >= 6) {
-                setError(err.message || 'Invalid Zipcode');
-            }
-            setAvailableCities([]);
-        } finally {
-            setIsFetchingLocation(false);
-        }
-    };
 
     const handleAddApplicant = async () => {
-        if (!newApplicant.name || !newApplicant.email || !newApplicant.phone_number || !newApplicant.pincode || !newApplicant.address || !newApplicant.city) {
+        if (!newApplicant.name || !newApplicant.email || !newApplicant.phone_number || !newApplicant.pincode || !newApplicant.address || !newApplicant.city || !newApplicant.state || !newApplicant.district) {
             setError('Please fill all fields, including Location details');
             return;
         }
@@ -189,34 +146,31 @@ const AddApplicantDialog: React.FC<AddApplicantDialogProps> = ({
                     />
                 </div>
 
-                {isFetchingLocation && <div style={{ fontSize: '0.8rem', color: theme.colors.primary.main }}>Fetching location details...</div>}
-
-                {/* Auto-filled Location Data */}
+                {/* Manual Location Data */}
                 <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }}>
-                    <div style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
-                        <label style={{ fontSize: '0.875rem', fontWeight: '500', color: '#555' }}>City / Area</label>
-                        <select
-                            style={{
-                                padding: '0.6rem',
-                                border: '1px solid #ddd',
-                                borderRadius: '8px',
-                                backgroundColor: 'white',
-                                fontSize: '0.9rem'
-                            }}
-                            value={newApplicant.city}
-                            onChange={(e) => setNewApplicant({ ...newApplicant, city: e.target.value })}
-                            disabled={isLoading || availableCities.length === 0}
-                        >
-                            <option value="">Select City/Area</option>
-                            {availableCities.map(city => (
-                                <option key={city} value={city}>{city}</option>
-                            ))}
-                        </select>
-                    </div>
+                    <Input
+                        label="City / Area"
+                        placeholder="e.g. Mumbai"
+                        value={newApplicant.city}
+                        onChange={(e) => setNewApplicant({ ...newApplicant, city: e.target.value })}
+                        disabled={isLoading}
+                    />
+                    <Input
+                        label="District"
+                        placeholder="e.g. Mumbai Suburban"
+                        value={newApplicant.district}
+                        onChange={(e) => setNewApplicant({ ...newApplicant, district: e.target.value })}
+                        disabled={isLoading}
+                    />
+                </div>
+
+                <div style={{ display: 'grid', gridTemplateColumns: '1fr', gap: '1rem' }}>
                     <Input
                         label="State / Province"
+                        placeholder="e.g. Maharashtra"
                         value={newApplicant.state}
-                        readOnly
+                        onChange={(e) => setNewApplicant({ ...newApplicant, state: e.target.value })}
+                        disabled={isLoading}
                     />
                 </div>
 
@@ -228,7 +182,7 @@ const AddApplicantDialog: React.FC<AddApplicantDialogProps> = ({
                     >
                         {appConfig.common.actions.cancel}
                     </Button>
-                    <Button onClick={handleAddApplicant} disabled={isLoading || isFetchingLocation}>
+                    <Button onClick={handleAddApplicant} disabled={isLoading}>
                         {isLoading ? 'Adding...' : appConfig.pages.applications.dialogs.add.submitButton}
                     </Button>
                 </div>

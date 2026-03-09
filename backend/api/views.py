@@ -6,6 +6,10 @@ from django.conf import settings
 from .serializers import ApplicationCreateSerializer
 from django.views.decorators.csrf import csrf_exempt
 
+from django.utils.decorators import method_decorator
+from django.views.decorators.csrf import csrf_exempt
+
+@method_decorator(csrf_exempt, name='dispatch')
 class LoginView(APIView):
     def post(self, request):
         from .serializers import LoginSerializer

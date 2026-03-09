@@ -843,7 +843,7 @@ class _GalleryScreenState extends State<GalleryScreen> {
   List<FileSystemEntity>? _media;
 
   static const String _apiBase =
-      'http://192.168.1.34:8000'; // LAN IP for physical device
+      'https://collateralar-production.up.railway.app';
 
   @override
   void initState() {

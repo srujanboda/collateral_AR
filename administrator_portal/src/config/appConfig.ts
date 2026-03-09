@@ -8,7 +8,7 @@ export const appConfig = {
         companyName: 'Perfios',
         logo: logo,
         collapsedLogo: collapsedLogo,
-        journeyUrl: 'http://localhost:5173',
+        journeyUrl: 'https://collateral-ar.vercel.app',
     },
     common: {
         actions: {

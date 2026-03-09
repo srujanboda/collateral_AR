@@ -1,7 +1,7 @@
 {
     "build": {
         "env": {
-            "VITE_API_URL": "https://collateral-ar-backend.up.railway.app"
+            "VITE_API_URL": "https://collateralar-production.up.railway.app"
         }
     },
     "framework": "vite",

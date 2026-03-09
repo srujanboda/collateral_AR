@@ -1,15 +1,17 @@
+from .mongo_utils import get_db_handle
+from asgiref.sync import async_to_sync
+from channels.layers import get_channel_layer
+def get_applicant_collection():
+    from .mongo_utils import get_db_handle
+    db = get_db_handle()
+    return db["applicants"]
+
 import os
 import shutil
 import random
 import string
 from django.core.files.storage import default_storage
 from django.core.files.base import ContentFile
-from .mongo_utils import get_db_handle
-from asgiref.sync import async_to_sync
-from channels.layers import get_channel_layer
-
-db = get_db_handle()
-collection = db["applicants"]
 
 def broadcast_application_update(message):
     try:
@@ -28,7 +30,7 @@ def generate_unique_perfios_id():
     while True:
         # Simple generation: PERF- followed by 4 random digits
         pid = "PERF-" + "".join(random.choices(string.digits, k=4))
-        if not collection.find_one({"perfios_id": pid}):
+        if not get_applicant_collection().find_one({"perfios_id": pid}):
             return pid
 
 def generate_applicant_id():
@@ -58,31 +60,31 @@ def create_application(data):
         "status": "Pending",
     }
     
-    collection.insert_one(new_app.copy())
+    get_applicant_collection().insert_one(new_app.copy())
     broadcast_application_update({"action": "create", "perfios_id": perfios_id})
     return new_app
 
 #---------------------applicant list----------------------#
 def list_applications():
-    applicants = list(collection.find({}, {"_id": 0}))
+    applicants = list(get_applicant_collection().find({}, {"_id": 0}))
     return applicants
 
 #---------------------applicant update----------------------#
 def update_application(perfios_id, updates):
     # updates: dict of fields to change
-    result = collection.update_one({"perfios_id": perfios_id}, {"$set": updates})
+    result = get_applicant_collection().update_one({"perfios_id": perfios_id}, {"$set": updates})
     if result.modified_count > 0:
         broadcast_application_update({"action": "update", "perfios_id": perfios_id, "updates": updates})
     return result.modified_count > 0
 
 #---------------------applicant get by id----------------------#
 def get_application_by_id(perfios_id):
-    applicant = collection.find_one({"perfios_id": perfios_id}, {"_id": 0})
+    applicant = get_applicant_collection().find_one({"perfios_id": perfios_id}, {"_id": 0})
     return applicant
 
 #---------------------cascade delete----------------------#
 def cascade_delete_application(perfios_id):
-    applicant = collection.find_one({"perfios_id": perfios_id})
+    applicant = get_applicant_collection().find_one({"perfios_id": perfios_id})
     if not applicant:
         return False, "Application not found", 0
     
@@ -102,7 +104,7 @@ def cascade_delete_application(perfios_id):
         print(f"[CASCADE DELETE] Deleted folder: {applicant_folder}")
     
     # Delete from MongoDB
-    result = collection.delete_one({"perfios_id": perfios_id})
+    result = get_applicant_collection().delete_one({"perfios_id": perfios_id})
     if result.deleted_count > 0:
         return True, "Application and all files deleted successfully", deleted_files_count
     
@@ -110,7 +112,7 @@ def cascade_delete_application(perfios_id):
 
 #--------------------Document uploading logic---------------------------#
 def handle_document_upload(perfios_id, step_id, files):
-    existing_applicant = collection.find_one({"perfios_id": perfios_id})
+    existing_applicant = get_applicant_collection().find_one({"perfios_id": perfios_id})
     if not existing_applicant:
         return None, "Applicant not found"
     
@@ -141,7 +143,7 @@ def handle_document_upload(perfios_id, step_id, files):
     
     # Update MongoDB - Replace or Add
     if old_file_paths:
-        collection.update_one(
+        get_applicant_collection().update_one(
             {"perfios_id": perfios_id, "documents.step_id": str(step_id)},
             {
                 "$set": {
@@ -152,7 +154,7 @@ def handle_document_upload(perfios_id, step_id, files):
         )
         action = "updated"
     else:
-        collection.update_one(
+        get_applicant_collection().update_one(
             {"perfios_id": perfios_id},
             {
                 "$set": {"status": "In Progress"},
@@ -177,7 +179,7 @@ def handle_document_upload(perfios_id, step_id, files):
 
 #--------------------Journey Completion---------------------------#
 def complete_application(perfios_id):
-    result = collection.update_one(
+    result = get_applicant_collection().update_one(
         {"perfios_id": perfios_id},
         {"$set": {"status": "Success"}}
     )
@@ -187,7 +189,7 @@ def complete_application(perfios_id):
         return True, "Journey completed successfully, status updated to Success"
     
     # Check if it was already success
-    app = collection.find_one({"perfios_id": perfios_id})
+    app = get_applicant_collection().find_one({"perfios_id": perfios_id})
     if app and app.get('status') == 'Success':
         return True, "Status already Success"
         
@@ -197,9 +199,9 @@ def complete_application(perfios_id):
 def handle_media_upload(files, perfios_id=None, email=None, submission_address=None, latitude=None, longitude=None):
     # Look up the applicant by perfios_id or email
     if perfios_id:
-        existing_applicant = collection.find_one({"perfios_id": perfios_id})
+        existing_applicant = get_applicant_collection().find_one({"perfios_id": perfios_id})
     elif email:
-        existing_applicant = collection.find_one({"email": email})
+        existing_applicant = get_applicant_collection().find_one({"email": email})
     else:
         return None, "perfios_id or email is required"
 
@@ -231,7 +233,7 @@ def handle_media_upload(files, perfios_id=None, email=None, submission_address=N
             }
         }
 
-    collection.update_one(
+    get_applicant_collection().update_one(
         {"perfios_id": applicant_pid},
         update_data
     )

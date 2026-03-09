@@ -1,15 +1,15 @@
 from .mongo_utils import get_db_handle
 import hashlib
-
-db = get_db_handle()
-collection = db["users"]
+import random
+import string
+from datetime import datetime
 
 def hash_password(password):
     return hashlib.sha256(password.encode()).hexdigest()
 
-import random
-import string
-from datetime import datetime
+def get_user_collection():
+    db = get_db_handle()
+    return db["users"]
 
 def generate_random_password(length=10):
     # Ensure at least one uppercase and one digit to pass validation
@@ -23,6 +23,7 @@ def generate_random_password(length=10):
     return "".join(pw_list)
 
 def create_user(username, password, name, organization, customer, role="Admin"):
+    collection = get_user_collection()
     # Check if user already exists
     if collection.find_one({"username": username}):
         return None, "User already exists"
@@ -41,6 +42,7 @@ def create_user(username, password, name, organization, customer, role="Admin"):
     return new_user, None
 
 def update_password(username, new_password):
+    collection = get_user_collection()
     result = collection.update_one(
         {"username": username},
         {"$set": {"password": hash_password(new_password)}}
@@ -48,6 +50,7 @@ def update_password(username, new_password):
     return result.modified_count > 0
 
 def update_user(username, data):
+    collection = get_user_collection()
     # Prevent password update via this method
     if "password" in data:
         del data["password"]
@@ -55,14 +58,17 @@ def update_user(username, data):
     return result.modified_count > 0
 
 def authenticate_user(username, password):
+    collection = get_user_collection()
     user = collection.find_one({"username": username})
     if user and user["password"] == hash_password(password):
         return user
     return None
 
 def list_users():
+    collection = get_user_collection()
     return list(collection.find({}, {"_id": 0, "password": 0}))
 
 def delete_user(username):
+    collection = get_user_collection()
     result = collection.delete_one({"username": username})
     return result.deleted_count > 0

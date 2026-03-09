@@ -1,9 +1,4 @@
 {
-    "build": {
-        "env": {
-            "VITE_API_URL": "https://collateralar-production.up.railway.app"
-        }
-    },
     "framework": "vite",
     "buildCommand": "npm run build",
     "outputDirectory": "dist",

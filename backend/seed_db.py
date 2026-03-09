@@ -8,7 +8,7 @@ os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'backend.settings')
 django.setup()
 
 def seed():
-    print("🌱 Seeding database...")
+    print("Seeding database...")
     
     # Create default admin user
     username = "administrator@perfios.com"
@@ -20,12 +20,12 @@ def seed():
     user, error = create_user(username, password, name, organization, customer, role="Admin")
     
     if error:
-        print(f"❌ Error: {error}")
+        print(f"Error: {error}")
     else:
-        print(f"✅ Created user: {username}")
-        print(f"🔑 Password: {password}")
+        print(f"Created user: {username}")
+        print(f"Password: {password}")
     
-    print("✨ Seeding complete!")
+    print("Seeding complete!")
 
 if __name__ == "__main__":
     seed()

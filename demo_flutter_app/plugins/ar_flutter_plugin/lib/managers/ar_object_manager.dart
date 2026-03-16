@@ -1,10 +1,8 @@
-import 'dart:typed_data';
 
 import 'package:ar_flutter_plugin/models/ar_anchor.dart';
 import 'package:ar_flutter_plugin/models/ar_node.dart';
 import 'package:ar_flutter_plugin/utils/json_converters.dart';
 import 'package:flutter/services.dart';
-import 'package:vector_math/vector_math_64.dart';
 
 // Type definitions to enforce a consistent use of the API
 typedef NodeTapResultHandler = void Function(List<String> nodes);
@@ -109,13 +107,13 @@ class ARObjectManager {
           }
       }
     } catch (e) {
-      print('Error caught: ' + e.toString());
+      print('Error caught: $e');
     }
     return Future.value();
   }
 
   /// Sets up the AR Object Manager
-  onInitialize() {
+  void onInitialize() {
     _channel.invokeMethod<void>('init', {});
   }
 
@@ -136,13 +134,13 @@ class ARObjectManager {
       } else {
         return await _channel.invokeMethod<bool>('addNode', node.toMap());
       }
-    } on PlatformException catch (e) {
+    } on PlatformException {
       return false;
     }
   }
 
   /// Remove given node from the AR Scene
-  removeNode(ARNode node) {
+  void removeNode(ARNode node) {
     _channel.invokeMethod<String>('removeNode', {'name': node.name});
   }
 }

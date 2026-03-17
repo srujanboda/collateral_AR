@@ -12,6 +12,7 @@ import 'package:http_parser/http_parser.dart';
 import 'ar_measurement_screen.dart';
 import 'package:video_player/video_player.dart';
 import 'package:chewie/chewie.dart';
+import 'floor_plan_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -636,6 +637,35 @@ class _LocationSharingScreenState extends State<LocationSharingScreen> {
                       ),
                     ),
                   ),
+                  const SizedBox(height: 12),
+                  SizedBox(
+                    width: double.infinity,
+                    height: 52,
+                    child: OutlinedButton.icon(
+                      onPressed: () {
+                        Navigator.of(context).push(
+                          MaterialPageRoute(
+                            builder: (context) => const FloorPlanScreen(),
+                          ),
+                        );
+                      },
+                      icon: const Icon(Icons.map_outlined, size: 20),
+                      label: const Text(
+                        'View Interactive Floor Plan',
+                        style: TextStyle(
+                          fontSize: 16,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                      style: OutlinedButton.styleFrom(
+                        side: const BorderSide(color: Color(0xFF0055b8)),
+                        foregroundColor: const Color(0xFF0055b8),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(8),
+                        ),
+                      ),
+                    ),
+                  ),
                 ],
               ),
             ),
@@ -991,10 +1021,12 @@ class _GalleryScreenState extends State<GalleryScreen> {
       if (widget.capturedAddress != null) {
         request.fields['submission_address'] = widget.capturedAddress!;
       }
-      if (widget.lat != null)
+      if (widget.lat != null) {
         request.fields['latitude'] = widget.lat.toString();
-      if (widget.lng != null)
+      }
+      if (widget.lng != null) {
         request.fields['longitude'] = widget.lng.toString();
+      }
 
       for (final path in _selectedPaths) {
         final mimeType = lookupMimeType(path) ?? 'application/octet-stream';

@@ -1,0 +1,318 @@
+
+> build_error_check.txt
+:6172:[+7154 ms] 
+Android resource 
+linking failed:
+  build_error_check.txt
+:6173:[        ] 
+process = AAPT2 aapt2-8
+.11.1-12782657-windows 
+Daemon #0:
+  build_error_check.txt
+:6174:[        ] 
+command = C:\Users\veda
+nt\.gradle\caches\8.14\
+transforms\333e8a3d66bc
+a18962efedd415760fef\tr
+ansformed\aapt2-8.11.1-
+12782657-windows\aapt2.
+exe link -I\
+  build_error_check.txt
+:6175:[        ]       
+  C:\Users\vedant\AppDa
+ta\Local\Android\sdk\pl
+atforms\android-30\andr
+oid.jar\
+  build_error_check.txt
+:6176:[        ]       
+  --manifest\
+  build_error_check.txt
+:6177:[        ]       
+  C:\Users\vedant\Deskt
+op\collateral_AR\demo_f
+lutter_app\build\ar_flu
+tter_plugin\intermediat
+es\aapt_friendly_merged
+_manifests\release\proc
+essReleaseManifest\aapt
+\AndroidManifest.xml\
+  build_error_check.txt
+:6178:[        ]       
+  -o\
+  build_error_check.txt
+:6179:[        ]       
+  C:\Users\vedant\Deskt
+op\collateral_AR\demo_f
+lutter_app\build\ar_flu
+tter_plugin\intermediat
+es\verified_library_res
+ources\release\verifyRe
+leaseResources\linked.a
+pk\
+  build_error_check.txt
+:6180:[        ]       
+  -R\
+  build_error_check.txt
+:6181:[        ]       
+  C:\Users\vedant\.grad
+le\caches\8.14\transfor
+ms\651b1a2810ca032d1ef6
+546e6af61b8b\transforme
+d\com.google.ar.core\la
+yout___arcore_education
+.xml.flat\
+  build_error_check.txt
+:6182:[        ]       
+  -R\
+  build_error_check.txt
+:6183:[        ]       
+  C:\Users\vedant\.grad
+le\caches\8.14\transfor
+ms\651b1a2810ca032d1ef6
+546e6af61b8b\transforme
+d\com.google.ar.core\ra
+w_keep_arcore.xml.flat\
+  build_error_check.txt
+:6184:[        ]       
+  -R\
+  build_error_check.txt
+:6185:[        ]       
+  C:\Users\vedant\.grad
+le\caches\8.14\transfor
+ms\0a53ca82b069408948bc
+819fcac355aa\transforme
+d\com.google.ar.scenefo
+rm.rendering\drawable_s
+ceneform_plane.png.flat
+\
+  build_error_check.txt
+:6186:[        ]       
+  -R\
+  build_error_check.txt
+:6187:[        ]       
+  C:\Users\vedant\.grad
+le\caches\8.14\transfor
+ms\0a53ca82b069408948bc
+819fcac355aa\transforme
+d\com.google.ar.scenefo
+rm.rendering\raw_scenef
+orm_camera_material.mat
+c.flat\
+  build_error_check.txt
+:6188:[        ]       
+  -R\
+  build_error_check.txt
+:6189:[        ]       
+  C:\Users\vedant\.grad
+le\caches\8.14\transfor
+ms\0a53ca82b069408948bc
+819fcac355aa\transforme
+d\com.google.ar.scenefo
+rm.rendering\raw_scenef
+orm_default_light_probe
+.sfb.flat\
+  build_error_check.txt
+:6190:[        ]       
+  -R\
+  build_error_check.txt
+:6191:[        ]       
+  C:\Users\vedant\.grad
+le\caches\8.14\transfor
+ms\0a53ca82b069408948bc
+819fcac355aa\transforme
+d\com.google.ar.scenefo
+rm.rendering\raw_scenef
+orm_opaque_colored_mate
+rial.matc.flat\
+  build_error_check.txt
+:6192:[        ]       
+  -R\
+  build_error_check.txt
+:6193:[        ]       
+  C:\Users\vedant\.grad
+le\caches\8.14\transfor
+ms\0a53ca82b069408948bc
+819fcac355aa\transforme
+d\com.google.ar.scenefo
+rm.rendering\raw_scenef
+orm_opaque_textured_mat
+erial.matc.flat\
+  build_error_check.txt
+:6194:[        ]       
+  -R\
+  build_error_check.txt
+:6195:[        ]       
+  C:\Users\vedant\.grad
+le\caches\8.14\transfor
+ms\0a53ca82b069408948bc
+819fcac355aa\transforme
+d\com.google.ar.scenefo
+rm.rendering\raw_scenef
+orm_plane_material.matc
+.flat\
+  build_error_check.txt
+:6196:[        ]       
+  -R\
+  build_error_check.txt
+:6197:[        ]       
+  C:\Users\vedant\.grad
+le\caches\8.14\transfor
+ms\0a53ca82b069408948bc
+819fcac355aa\transforme
+d\com.google.ar.scenefo
+rm.rendering\raw_scenef
+orm_plane_shadow_materi
+al.matc.flat\
+  build_error_check.txt
+:6198:[        ]       
+  -R\
+  build_error_check.txt
+:6199:[        ]       
+  C:\Users\vedant\.grad
+le\caches\8.14\transfor
+ms\0a53ca82b069408948bc
+819fcac355aa\transforme
+d\com.google.ar.scenefo
+rm.rendering\raw_scenef
+orm_transparent_colored
+_material.matc.flat\
+  build_error_check.txt
+:6200:[        ]       
+  -R\
+  build_error_check.txt
+:6201:[        ]       
+  C:\Users\vedant\.grad
+le\caches\8.14\transfor
+ms\0a53ca82b069408948bc
+819fcac355aa\transforme
+d\com.google.ar.scenefo
+rm.rendering\raw_scenef
+orm_transparent_texture
+d_material.matc.flat\
+  build_error_check.txt
+:6202:[        ]       
+  -R\
+  build_error_check.txt
+:6203:[        ]       
+  C:\Users\vedant\.grad
+le\caches\8.14\transfor
+ms\0a53ca82b069408948bc
+819fcac355aa\transforme
+d\com.google.ar.scenefo
+rm.rendering\raw_scenef
+orm_view_renderable.sfb
+.flat\
+  build_error_check.txt
+:6204:[        ]       
+  -R\
+  build_error_check.txt
+:6205:[        ]       
+  C:\Users\vedant\.grad
+le\caches\8.14\transfor
+ms\c980cfd52faffd6fc758
+9eebfd6d0e8d\transforme
+d\androidx.core\drawabl
+e-anydpi-v21_ic_call_an
+swer.xml.flat\
+  build_error_check.txt
+:6206:[        ]       
+  -R\
+  build_error_check.txt
+:6207:[        ]       
+  C:\Users\vedant\.grad
+le\caches\8.14\transfor
+ms\c980cfd52faffd6fc758
+9eebfd6d0e8d\transforme
+d\androidx.core\drawabl
+e-anydpi-v21_ic_call_an
+swer_low.xml.flat\
+  build_error_check.txt
+:6208:[        ]       
+  -R\
+  build_error_check.txt
+:6209:[        ]       
+  C:\Users\vedant\.grad
+le\caches\8.14\transfor
+ms\c980cfd52faffd6fc758
+9eebfd6d0e8d\transforme
+d\androidx.core\drawabl
+e-anydpi-v21_ic_call_an
+swer_video.xml.flat\
+  build_error_check.txt
+:6210:[        ]       
+  -R\
+  build_error_check.txt
+:6211:[        ]       
+  C:\Users\vedant\.grad
+le\caches\8.14\transfor
+ms\c980cfd52faffd6fc758
+9eebfd6d0e8d\transforme
+d\androidx.core\drawabl
+e-anydpi-v21_ic_call_an
+swer_video_low.xml.flat
+\
+  build_error_check.txt
+:6212:[        ]       
+  -R\
+  build_error_check.txt
+:6213:[        ]       
+  C:\Users\vedant\.grad
+le\caches\8.14\transfor
+ms\c980cfd52faffd6fc758
+9eebfd6d0e8d\transforme
+d\androidx.core\drawabl
+e-anydpi-v21_ic_call_de
+cline.xml.flat\
+  build_error_check.txt
+:6214:[        ]       
+  -R\
+  build_error_check.txt
+:6215:[        ]       
+  C:\Users\vedant\.grad
+le\caches\8.14\transfor
+ms\c980cfd52faffd6fc758
+9eebfd6d0e8d\transforme
+d\androidx.core\drawabl
+e-anydpi-v21_ic_call_de
+cline_low.xml.flat\
+  build_error_check.txt
+:6216:[        ]       
+  -R\
+  build_error_check.txt
+:6217:[        ]       
+  C:\Users\vedant\.grad
+le\caches\8.14\transfor
+ms\c980cfd52faffd6fc758
+9eebfd6d0e8d\transforme
+d\androidx.core\drawabl
+e-hdpi-v4_ic_call_answe
+r.png.flat\
+  build_error_check.txt
+:6218:[        ]       
+  -R\
+  build_error_check.txt
+:6219:[        ]       
+  C:\Users\vedant\.grad
+le\caches\8.14\transfor
+ms\c980cfd52faffd6fc758
+9eebfd6d0e8d\transforme
+d\androidx.core\drawabl
+e-hdpi-v4_ic_call_answe
+r_low.png.flat\
+  build_error_check.txt
+:6220:[        ]       
+  -R\
+  build_error_check.txt
+:6221:[        ]       
+  C:\Users\vedant\.grad
+le\caches\8.14\transfor
+ms\c980cfd52faffd6fc758
+9eebfd6d0e8d\transforme
+d\androidx.core\drawabl
+e-hdpi-v4_ic_call_answe
+r_video.png.flat\
+  build_error_check.txt
+:6222:[        ]       
+  -R\
+
+

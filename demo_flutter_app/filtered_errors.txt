@@ -1,0 +1,21 @@
+
+build_error_check.txt:2
+28:[        ] Error: 
+could not open 
+`C:\Program 
+Files\Android\Android 
+Studio\jbr\lib\jvm.cfg'
+build_error_check.txt:5
+383:[        ]   Task 
+has failed previously.
+build_error_check.txt:6
+172:[+7154 ms] Android 
+resource linking 
+failed:
+build_error_check.txt:8
+337:[ +189 ms] > Task :
+ar_flutter_plugin:verif
+yReleaseResources 
+FAILED
+
+

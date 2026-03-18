@@ -558,14 +558,14 @@ class _ArMeasurementScreenState extends State<ArMeasurementScreen>
     _arObjectManager = arObjectManager;
     _arAnchorManager = arAnchorManager;
 
-    await _arSessionManager?.onInitialize(
+    _arSessionManager?.onInitialize(
       showFeaturePoints: true,
       showPlanes: true,
       showWorldOrigin: false,
       handleTaps: true,
       hitTestFromCenter: true,
     );
-    await _arObjectManager?.onInitialize();
+    _arObjectManager?.onInitialize();
 
     _arSessionManager?.onPlaneOrPointTap = _onPlaneOrPointTapped;
 

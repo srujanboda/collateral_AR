@@ -12,6 +12,7 @@ import 'package:http_parser/http_parser.dart';
 import 'ar_measurement_screen.dart';
 import 'package:video_player/video_player.dart';
 import 'package:chewie/chewie.dart';
+import 'floor_plan_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -622,6 +623,35 @@ class _LocationSharingScreenState extends State<LocationSharingScreen> {
                       icon: const Icon(Icons.straighten_rounded, size: 20),
                       label: const Text(
                         'Open AR distance measurement',
+                        style: TextStyle(
+                          fontSize: 16,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                      style: OutlinedButton.styleFrom(
+                        side: const BorderSide(color: Color(0xFF0055b8)),
+                        foregroundColor: const Color(0xFF0055b8),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(8),
+                        ),
+                      ),
+                    ),
+                  ),
+                  const SizedBox(height: 12),
+                  SizedBox(
+                    width: double.infinity,
+                    height: 52,
+                    child: OutlinedButton.icon(
+                      onPressed: () {
+                        Navigator.of(context).push(
+                          MaterialPageRoute(
+                            builder: (context) => const FloorPlanScreen(),
+                          ),
+                        );
+                      },
+                      icon: const Icon(Icons.map_outlined, size: 20),
+                      label: const Text(
+                        'View Interactive Floor Plan',
                         style: TextStyle(
                           fontSize: 16,
                           fontWeight: FontWeight.bold,

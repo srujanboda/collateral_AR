@@ -19,6 +19,8 @@ void main() {
 }
 
 class MyApp extends StatefulWidget {
+  const MyApp({Key? key}) : super(key: key);
+
   @override
   _MyAppState createState() => _MyAppState();
 }
@@ -72,7 +74,7 @@ class _MyAppState extends State<MyApp> {
 }
 
 class ExampleList extends StatelessWidget {
-  ExampleList({Key? key}) : super(key: key);
+  const ExampleList({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -127,7 +129,7 @@ class ExampleList extends StatelessWidget {
 }
 
 class ExampleCard extends StatelessWidget {
-  ExampleCard({Key? key, required this.example}) : super(key: key);
+  const ExampleCard({Key? key, required this.example}) : super(key: key);
   final Example example;
 
   @override

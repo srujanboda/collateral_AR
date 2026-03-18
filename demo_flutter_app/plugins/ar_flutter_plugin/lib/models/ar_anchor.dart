@@ -39,16 +39,16 @@ abstract class ARAnchor {
 /// An [ARAnchor] fixed to a tracked plane
 class ARPlaneAnchor extends ARAnchor {
   ARPlaneAnchor({
-    required Matrix4 transformation,
-    String? name,
+    required super.transformation,
+    super.name,
     List<String>? childNodes,
     String? cloudanchorid,
     int? ttl,
   })  : childNodes = childNodes ?? [],
-        cloudanchorid = cloudanchorid ?? null,
+        cloudanchorid = cloudanchorid,
         ttl = ttl ?? 1,
         super(
-            type: AnchorType.plane, transformation: transformation, name: name);
+            type: AnchorType.plane);
 
   /// Names of ARNodes attached to this [APlaneRAnchor]
   List<String> childNodes;
@@ -96,8 +96,7 @@ Map<String, dynamic> aRPlaneAnchorToJson(ARPlaneAnchor instance) {
 /// An [ARAnchor] type that is not supported yet
 class ARUnkownAnchor extends ARAnchor {
   ARUnkownAnchor(
-      {required AnchorType type, required Matrix4 transformation, String? name})
-      : super(type: type, transformation: transformation, name: name);
+      {required super.type, required super.transformation, super.name});
 
   static ARUnkownAnchor fromJson(Map<String, dynamic> json) =>
       aRUnkownAnchorFromJson(json);

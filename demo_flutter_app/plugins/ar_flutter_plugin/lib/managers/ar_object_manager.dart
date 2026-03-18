@@ -109,13 +109,13 @@ class ARObjectManager {
           }
       }
     } catch (e) {
-      print('Error caught: ' + e.toString());
+      print('Error caught: $e');
     }
     return Future.value();
   }
 
   /// Sets up the AR Object Manager
-  onInitialize() {
+  void onInitialize() {
     _channel.invokeMethod<void>('init', {});
   }
 
@@ -136,13 +136,13 @@ class ARObjectManager {
       } else {
         return await _channel.invokeMethod<bool>('addNode', node.toMap());
       }
-    } on PlatformException catch (e) {
+    } on PlatformException {
       return false;
     }
   }
 
   /// Remove given node from the AR Scene
-  removeNode(ARNode node) {
+  void removeNode(ARNode node) {
     _channel.invokeMethod<String>('removeNode', {'name': node.name});
   }
 }

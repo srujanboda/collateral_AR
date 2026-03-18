@@ -842,8 +842,7 @@ class _GalleryScreenState extends State<GalleryScreen> {
   bool _isUploading = false;
   List<FileSystemEntity>? _media;
 
-  static const String _apiBase =
-      'https://collateralar-production.up.railway.app';
+  static const String _apiBase = 'http://10.84.153.247:8000';
 
   @override
   void initState() {
@@ -991,10 +990,12 @@ class _GalleryScreenState extends State<GalleryScreen> {
       if (widget.capturedAddress != null) {
         request.fields['submission_address'] = widget.capturedAddress!;
       }
-      if (widget.lat != null)
+      if (widget.lat != null) {
         request.fields['latitude'] = widget.lat.toString();
-      if (widget.lng != null)
+      }
+      if (widget.lng != null) {
         request.fields['longitude'] = widget.lng.toString();
+      }
 
       for (final path in _selectedPaths) {
         final mimeType = lookupMimeType(path) ?? 'application/octet-stream';

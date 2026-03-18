@@ -1,5 +1,5 @@
 import React from 'react';
-import { ArrowLeft, MapPin, FileText, ExternalLink } from 'lucide-react';
+import { ArrowLeft, MapPin, FileText, ExternalLink, Image as ImageIcon } from 'lucide-react';
 import Card from '../common/Card';
 import { theme } from '../../config/theme';
 
@@ -137,6 +137,44 @@ const ApplicantDetailView: React.FC<ApplicantDetailViewProps> = ({
                     </div>
                 </div>
             </Card>
+
+            {/* Field Media Section */}
+            {applicant.field_media && applicant.field_media.length > 0 && (
+                <div style={{ marginTop: '2rem' }}>
+                    <Card>
+                        <div style={{ padding: '1.5rem' }}>
+                            <h2 style={{ fontSize: '1.25rem', fontWeight: 'bold', marginBottom: '1.5rem', borderBottom: '2px solid #f0f0f0', paddingBottom: '0.75rem', display: 'flex', alignItems: 'center', gap: '8px' }}>
+                                <ImageIcon size={22} color={theme.colors.primary.main} />
+                                Flutter App Field Media
+                            </h2>
+                            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(200px, 1fr))', gap: '1rem' }}>
+                                {applicant.field_media.map((mediaPath: string, idx: number) => {
+                                    // Determine if it's an image or video based on extension, basic check
+                                    const isImage = mediaPath.toLowerCase().match(/\.(jpeg|jpg|gif|png)$/) != null;
+                                    const fullUrl = `${apiBase}/media/${mediaPath}`;
+
+                                    return (
+                                        <div key={idx} style={{ border: '1px solid #eee', borderRadius: '8px', overflow: 'hidden', display: 'flex', flexDirection: 'column' }}>
+                                            {isImage ? (
+                                                <a href={fullUrl} target="_blank" rel="noopener noreferrer" style={{ display: 'block', height: '150px', backgroundColor: '#f9f9f9' }}>
+                                                    <img src={fullUrl} alt={`Field Media ${idx + 1}`} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                                                </a>
+                                            ) : (
+                                                <div style={{ height: '150px', backgroundColor: '#f0f4ff', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                                                    <a href={fullUrl} target="_blank" rel="noopener noreferrer" style={{ color: theme.colors.primary.main, textDecoration: 'none', fontWeight: '500', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '8px' }}>
+                                                        <ExternalLink size={24} />
+                                                        View Video {idx + 1}
+                                                    </a>
+                                                </div>
+                                            )}
+                                        </div>
+                                    );
+                                })}
+                            </div>
+                        </div>
+                    </Card>
+                </div>
+            )}
 
             {/* Verification Location Section */}
             {applicant.verification_location && (

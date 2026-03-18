@@ -156,10 +156,8 @@ class _MediaSubmitScreenState extends State<MediaSubmitScreen> {
   final List<XFile> _selected = [];
   bool _isUploading = false;
 
-  // Change this to your backend IP/URL (use your machine's LAN IP for physical device)
-  static const String _apiBase =
-      'http://10.0.2.2:8000'; // Android emulator → localhost
-  // For physical device on the same WiFi, use: 'http://192.168.x.x:8000'
+  // Changed to local network IP for physical device testing
+  static const String _apiBase = 'http://10.84.153.247:8000';
 
   Future<void> _pickMedia() async {
     showModalBottomSheet(

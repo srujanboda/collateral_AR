@@ -1,0 +1,37 @@
+# ARCore Rules
+-keep class com.google.ar.core.** { *; }
+-dontwarn com.google.ar.core.**
+
+# Sceneform Rules
+-keep class com.google.ar.sceneform.** { *; }
+-dontwarn com.google.ar.sceneform.**
+
+# General rules for Sceneform animation and assets (from missing_rules.txt)
+-dontwarn com.google.ar.sceneform.animation.AnimationEngine
+-dontwarn com.google.ar.sceneform.animation.AnimationLibraryLoader
+-dontwarn com.google.ar.sceneform.assets.Loader
+-dontwarn com.google.ar.sceneform.assets.ModelData
+-dontwarn com.google.devtools.build.android.desugar.runtime.ThrowableExtension
+
+# Flutter ProGuard rules (standard)
+-keep class io.flutter.app.** { *; }
+-keep class io.flutter.plugin.** { *; }
+-keep class io.flutter.util.** { *; }
+-keep class io.flutter.view.** { *; }
+-keep class io.flutter.** { *; }
+-keep class io.flutter.plugins.** { *; }
+
+# Play Core rules
+-keep class com.google.android.play.core.common.IntentSenderForResultHelper { *; }
+-keep class com.google.android.play.core.release_notes.CompatibilityCheck { *; }
+-keep class com.google.android.play.core.tasks.** { *; }
+-keep class com.google.android.play.core.splitinstall.** { *; }
+-keep class com.google.android.play.core.review.** { *; }
+-keep class com.google.android.play.core.appupdate.** { *; }
+-keep class com.google.android.play.core.assetpacks.** { *; }
+-keep class com.google.android.play.core.common.** { *; }
+-keep class com.google.android.play.core.install.** { *; }
+-dontwarn com.google.android.play.core.**
+
+# AndroidX Core lStar warning suppression (if applicable)
+-dontwarn androidx.core.view.ViewCompat$Api31Impl

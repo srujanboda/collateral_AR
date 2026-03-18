@@ -19,7 +19,7 @@ import 'package:geoflutterfire/geoflutterfire.dart';
 import 'package:geolocator/geolocator.dart';
 
 class ExternalModelManagementWidget extends StatefulWidget {
-  ExternalModelManagementWidget({Key? key}) : super(key: key);
+  const ExternalModelManagementWidget({Key? key}) : super(key: key);
   @override
   _ExternalModelManagementWidgetState createState() =>
       _ExternalModelManagementWidgetState();
@@ -31,7 +31,7 @@ class _ExternalModelManagementWidgetState
   bool _initialized = false;
   bool _error = false;
   FirebaseManager firebaseManager = FirebaseManager();
-  Map<String, Map> anchorsInDownloadProgress = Map<String, Map>();
+  Map<String, Map> anchorsInDownloadProgress = <String, Map>{};
 
   ARSessionManager? arSessionManager;
   ARObjectManager? arObjectManager;
@@ -151,7 +151,7 @@ class _ExternalModelManagementWidgetState
                   visible: modelChoiceActive,
                   child: ModelSelectionWidget(
                       onTap: onModelSelected,
-                      firebaseManager: this.firebaseManager)))
+                      firebaseManager: firebaseManager)))
         ])));
   }
 
@@ -232,17 +232,17 @@ class _ExternalModelManagementWidgetState
   }
 
   void onModelSelected(AvailableModel model) {
-    this.selectedModel = model;
-    this.arSessionManager!.onError(model.name + " selected");
+    selectedModel = model;
+    arSessionManager!.onError("${model.name} selected");
     setState(() {
       modelChoiceActive = false;
     });
   }
 
   Future<void> onRemoveEverything() async {
-    anchors.forEach((anchor) {
-      this.arAnchorManager!.removeAnchor(anchor);
-    });
+    for (var anchor in anchors) {
+      arAnchorManager!.removeAnchor(anchor);
+    }
     anchors = [];
     if (lastUploadedAnchor != "") {
       setState(() {
@@ -259,78 +259,78 @@ class _ExternalModelManagementWidgetState
 
   Future<void> onNodeTapped(List<String> nodeNames) async {
     var foregroundNode = nodes.firstWhere((element) => element.name == nodeNames.first);
-    this.arSessionManager!.onError(foregroundNode.data!["onTapText"]);
+    arSessionManager!.onError(foregroundNode.data!["onTapText"]);
   }
 
   Future<void> onPlaneOrPointTapped(
       List<ARHitTestResult> hitTestResults) async {
     var singleHitTestResult = hitTestResults.firstWhere(
         (hitTestResult) => hitTestResult.type == ARHitTestResultType.plane);
-    if (singleHitTestResult != null) {
-      var newAnchor = ARPlaneAnchor(
-          transformation: singleHitTestResult.worldTransform, ttl: 2);
-      bool? didAddAnchor = await this.arAnchorManager!.addAnchor(newAnchor);
-      if (didAddAnchor!) {
-        this.anchors.add(newAnchor);
-        // Add note to anchor
-        var newNode = ARNode(
-            type: NodeType.webGLB,
-            uri: this.selectedModel.uri,
-            scale: VectorMath.Vector3(0.2, 0.2, 0.2),
-            position: VectorMath.Vector3(0.0, 0.0, 0.0),
-            rotation: VectorMath.Vector4(1.0, 0.0, 0.0, 0.0),
-            data: {"onTapText": "I am a " + this.selectedModel.name});
-        bool? didAddNodeToAnchor =
-            await this.arObjectManager!.addNode(newNode, planeAnchor: newAnchor);
-        if (didAddNodeToAnchor!) {
-          this.nodes.add(newNode);
-          setState(() {
-            readyToUpload = true;
-          });
-        } else {
-          this.arSessionManager!.onError("Adding Node to Anchor failed");
-        }
+    var newAnchor = ARPlaneAnchor(
+        transformation: singleHitTestResult.worldTransform, ttl: 2);
+    bool? didAddAnchor = await this.arAnchorManager!.addAnchor(newAnchor);
+    if (didAddAnchor!) {
+      this.anchors.add(newAnchor);
+      // Add note to anchor
+      var newNode = ARNode(
+          type: NodeType.webGLB,
+          uri: this.selectedModel.uri,
+          scale: VectorMath.Vector3(0.2, 0.2, 0.2),
+          position: VectorMath.Vector3(0.0, 0.0, 0.0),
+          rotation: VectorMath.Vector4(1.0, 0.0, 0.0, 0.0),
+          data: {"onTapText": "I am a " + this.selectedModel.name});
+      bool? didAddNodeToAnchor =
+          await this.arObjectManager!.addNode(newNode, planeAnchor: newAnchor);
+      if (didAddNodeToAnchor!) {
+        this.nodes.add(newNode);
+        setState(() {
+          readyToUpload = true;
+        });
       } else {
-        this.arSessionManager!.onError("Adding Anchor failed");
+        this.arSessionManager!.onError("Adding Node to Anchor failed");
       }
+    } else {
+      this.arSessionManager!.onError("Adding Anchor failed");
     }
-  }
+    }
 
   Future<void> onUploadButtonPressed() async {
-    this.arAnchorManager!.uploadAnchor(this.anchors.last);
+    arAnchorManager!.uploadAnchor(anchors.last);
     setState(() {
       readyToUpload = false;
     });
   }
 
-  onAnchorUploaded(ARAnchor anchor) {
+  void onAnchorUploaded(ARAnchor anchor) {
     // Upload anchor information to firebase
     firebaseManager.uploadAnchor(anchor,
-        currentLocation: this.arLocationManager!.currentLocation);
+        currentLocation: arLocationManager!.currentLocation);
     // Upload child nodes to firebase
     if (anchor is ARPlaneAnchor) {
-      anchor.childNodes.forEach((nodeName) => firebaseManager.uploadObject(
-          nodes.firstWhere((element) => element.name == nodeName)));
+      for (var nodeName in anchor.childNodes) {
+        firebaseManager.uploadObject(
+          nodes.firstWhere((element) => element.name == nodeName));
+      }
     }
     setState(() {
       readyToDownload = true;
       readyToUpload = false;
     });
-    this.arSessionManager!.onError("Upload successful");
+    arSessionManager!.onError("Upload successful");
   }
 
   ARAnchor onAnchorDownloaded(Map<String,dynamic> serializedAnchor) {
     final anchor = ARPlaneAnchor.fromJson(anchorsInDownloadProgress[serializedAnchor["cloudanchorid"]] as Map<String,dynamic>);
     anchorsInDownloadProgress.remove(anchor.cloudanchorid);
-    this.anchors.add(anchor);
+    anchors.add(anchor);
 
     // Download nodes attached to this anchor
     firebaseManager.getObjectsFromAnchor(anchor, (snapshot) {
-      snapshot.docs.forEach((objectDoc) {
+      for (var objectDoc in snapshot.docs) {
         ARNode object = ARNode.fromMap(objectDoc.data() as Map<String, dynamic>);
         arObjectManager!.addNode(object, planeAnchor: anchor);
-        this.nodes.add(object);
-      });
+        nodes.add(object);
+      }
     });
 
     return anchor;
@@ -345,18 +345,17 @@ class _ExternalModelManagementWidgetState
     //});
 
     // Get anchors within a radius of 100m of the current device's location
-    if (this.arLocationManager!.currentLocation != null) {
+    if (arLocationManager!.currentLocation != null) {
       firebaseManager.downloadAnchorsByLocation((snapshot) {
         final cloudAnchorId = snapshot.get("cloudanchorid");
         anchorsInDownloadProgress[cloudAnchorId] = snapshot.data() as Map<String, dynamic>;
         arAnchorManager!.downloadAnchor(cloudAnchorId);
-      }, this.arLocationManager!.currentLocation, 0.1);
+      }, arLocationManager!.currentLocation, 0.1);
       setState(() {
         readyToDownload = false;
       });
     } else {
-      this
-          .arSessionManager!
+      arSessionManager!
           .onError("Location updates not running, can't download anchors");
     }
   }
@@ -480,9 +479,9 @@ class FirebaseManager {
         .within(center: center, radius: radius, field: 'position');
 
     stream.listen((List<DocumentSnapshot> documentList) {
-      documentList.forEach((element) {
+      for (var element in documentList) {
         listener(element);
-      });
+      }
     });
   }
 
@@ -534,7 +533,7 @@ class ModelSelectionWidget extends StatefulWidget {
   final Function onTap;
   final FirebaseManager firebaseManager;
 
-  ModelSelectionWidget({required this.onTap, required this.firebaseManager});
+  const ModelSelectionWidget({Key? key, required this.onTap, required this.firebaseManager}) : super(key: key);
 
   @override
   _ModelSelectionWidgetState createState() => _ModelSelectionWidgetState();
@@ -549,12 +548,12 @@ class _ModelSelectionWidgetState extends State<ModelSelectionWidget> {
   void initState() {
     super.initState();
     widget.firebaseManager.downloadAvailableModels((snapshot) {
-      snapshot.docs.forEach((element) {
+      for (var element in snapshot.docs) {
         setState(() {
           models.add(AvailableModel(element.get("name"), element.get("uri"),
               element.get("image").first["downloadURL"]));
         });
-      });
+      }
     });
   }
 
@@ -587,7 +586,7 @@ class _ModelSelectionWidgetState extends State<ModelSelectionWidget> {
                     .style
                     .apply(fontSizeFactor: 2.0)),
           ),
-          Container(
+          SizedBox(
             height: MediaQuery.of(context).size.width * 0.65,
             child: ListView.builder(
               itemCount: models.length,

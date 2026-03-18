@@ -37,7 +37,7 @@ abstract class PlatformARView {
 }
 
 /// Instantiates [ARSessionManager], [ARObjectManager] and returns them to the widget instantiating the [ARView] using the [arViewCreatedCallback]
-createManagers(
+void createManagers(
     int id,
     BuildContext? context,
     ARViewCreatedCallback? arViewCreatedCallback,
@@ -142,8 +142,8 @@ class ARView extends StatefulWidget {
   /// Configures whether or not to display the device's platform type above the AR view. Defaults to false
   final bool showPlatformType;
 
-  ARView(
-      {Key? key,
+  const ARView(
+      {super.key,
       required this.onARViewCreated,
       this.planeDetectionConfig = PlaneDetectionConfig.none,
       this.showPlatformType = false,
@@ -151,15 +151,14 @@ class ARView extends StatefulWidget {
           "Camera permission must be given to the app for AR functions to work",
       this.permissionPromptButtonText = "Grant Permission",
       this.permissionPromptParentalRestriction =
-          "Camera permission is restriced by the OS, please check parental control settings"})
-      : super(key: key);
+          "Camera permission is restriced by the OS, please check parental control settings"});
   @override
   _ARViewState createState() => _ARViewState(
-      showPlatformType: this.showPlatformType,
-      permissionPromptDescription: this.permissionPromptDescription,
-      permissionPromptButtonText: this.permissionPromptButtonText,
+      showPlatformType: showPlatformType,
+      permissionPromptDescription: permissionPromptDescription,
+      permissionPromptButtonText: permissionPromptButtonText,
       permissionPromptParentalRestriction:
-          this.permissionPromptParentalRestriction);
+          permissionPromptParentalRestriction);
 }
 
 class _ARViewState extends State<ARView> {
@@ -181,18 +180,18 @@ class _ARViewState extends State<ARView> {
     initCameraPermission();
   }
 
-  initCameraPermission() async {
+  Future<void> initCameraPermission() async {
     requestCameraPermission();
   }
 
-  requestCameraPermission() async {
+  Future<void> requestCameraPermission() async {
     final cameraPermission = await Permission.camera.request();
     setState(() {
       _cameraPermission = cameraPermission;
     });
   }
 
-  requestCameraPermissionFromSettings() async {
+  Future<void> requestCameraPermissionFromSettings() async {
     final cameraPermission = await Permission.camera.request();
     if (cameraPermission == PermissionStatus.permanentlyDenied) {
       openAppSettings();

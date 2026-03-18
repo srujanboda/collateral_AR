@@ -49,7 +49,7 @@ export default function UploadPage() {
     const perfios_id = locationState?.perfios_id || new URLSearchParams(window.location.search).get('perfios_id');
 
     // Dynamic API Base URL
-    const rawUrl = import.meta.env.VITE_API_URL || `${window.location.protocol}//${window.location.hostname}:8000`;
+    const rawUrl = import.meta.env.VITE_API_URL || 'http://10.84.153.247:8000';
     const API_BASE = rawUrl.endsWith('/') ? rawUrl.slice(0, -1) : rawUrl;
 
     const handleNext = async () => {

@@ -10,6 +10,8 @@ import os
 import shutil
 import random
 import string
+import logging
+from . import ocr_service, defect_service
 from django.core.files.storage import default_storage
 from django.core.files.base import ContentFile
 
@@ -125,10 +127,21 @@ def handle_document_upload(perfios_id, step_id, files):
     
     # Save new files to disk
     new_file_paths = []
+    ocr_results = []
     for file in files:
         file_path = f"documents/{perfios_id}/{step_id}/{file.name}"
         actual_path = default_storage.save(file_path, ContentFile(file.read()))
         new_file_paths.append(actual_path)
+        
+        # Run OCR extraction
+        full_path = default_storage.path(actual_path)
+        ocr_result = ocr_service.extract_text_from_file(full_path)
+        if ocr_result:
+            ocr_results.append({
+                "file_name": file.name,
+                "text": ocr_result.get("text"),
+                "details": ocr_result.get("details")
+            })
 
     # Find orphaned files (old files NOT in new files)
     orphaned_files = set(old_file_paths) - set(new_file_paths)
@@ -148,7 +161,8 @@ def handle_document_upload(perfios_id, step_id, files):
             {
                 "$set": {
                     "status": "In Progress",
-                    "documents.$.files": new_file_paths
+                    "documents.$.files": new_file_paths,
+                    "documents.$.ocr_data": ocr_results
                 }
             }
         )
@@ -161,7 +175,8 @@ def handle_document_upload(perfios_id, step_id, files):
                 "$push": {
                     "documents": {
                         "step_id": str(step_id),
-                        "files": new_file_paths
+                        "files": new_file_paths,
+                        "ocr_data": ocr_results
                     }
                 }
             }
@@ -212,6 +227,7 @@ def handle_media_upload(files, perfios_id=None, email=None, submission_address=N
     applicant_pid = existing_applicant["perfios_id"]
 
     saved_paths = []
+    defect_results = []
     for file in files:
         # Sanitize filename
         safe_name = file.name.replace(" ", "_")
@@ -219,9 +235,23 @@ def handle_media_upload(files, perfios_id=None, email=None, submission_address=N
         actual_path = default_storage.save(file_path, ContentFile(file.read()))
         saved_paths.append(actual_path)
 
+        # Run Defect Detection
+        full_path = default_storage.path(actual_path)
+        defect_result = defect_service.detect_defects(full_path)
+        if defect_result:
+            defect_results.append({
+                "file_name": file.name,
+                "path": actual_path,
+                "defects": defect_result.get("defects"),
+                "summary": defect_result.get("summary")
+            })
+
     # Update verification_location and append to field_media array in MongoDB
     update_data = {
-        "$push": {"field_media": {"$each": saved_paths}}
+        "$push": {
+            "field_media": {"$each": saved_paths},
+            "defect_logs": {"$each": defect_results}
+        }
     }
     
     if submission_address or latitude or longitude:

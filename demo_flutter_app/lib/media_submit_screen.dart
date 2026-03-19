@@ -4,6 +4,8 @@ import 'package:image_picker/image_picker.dart';
 import 'package:http/http.dart' as http;
 import 'package:http_parser/http_parser.dart';
 import 'package:mime/mime.dart';
+import '../constants.dart';
+import '../widgets/common_widgets.dart';
 
 // ── Perfios ID entry screen ──────────────────────────────────────────────────
 class PerfiosIdScreen extends StatefulWidget {
@@ -91,13 +93,6 @@ class _PerfiosIdScreenState extends State<PerfiosIdScreen> {
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(12),
                   ),
-                  focusedBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(12),
-                    borderSide: const BorderSide(
-                      color: Color(0xFF0055b8),
-                      width: 2,
-                    ),
-                  ),
                 ),
                 validator: (val) => (val == null || val.trim().isEmpty)
                     ? 'Please enter a Perfios ID'
@@ -155,9 +150,6 @@ class _MediaSubmitScreenState extends State<MediaSubmitScreen> {
   final ImagePicker _picker = ImagePicker();
   final List<XFile> _selected = [];
   bool _isUploading = false;
-
-  // Changed to local network IP for physical device testing
-  static const String _apiBase = 'http://10.84.153.247:8000';
 
   Future<void> _pickMedia() async {
     showModalBottomSheet(
@@ -240,7 +232,7 @@ class _MediaSubmitScreenState extends State<MediaSubmitScreen> {
     setState(() => _isUploading = true);
 
     try {
-      final uri = Uri.parse('$_apiBase/api/application/upload-media/');
+      final uri = Uri.parse('$apiBaseUrl/api/application/upload-media/');
       final request = http.MultipartRequest('POST', uri);
       request.fields['perfios_id'] = widget.perfiosId;
       if (widget.capturedAddress != null) {
@@ -272,7 +264,17 @@ class _MediaSubmitScreenState extends State<MediaSubmitScreen> {
       setState(() => _isUploading = false);
 
       if (response.statusCode == 201) {
-        _showSuccessDialog();
+        showDialog(
+          context: context,
+          barrierDismissible: false,
+          builder: (_) => SuccessDialog(
+            message: '${_selected.length} files uploaded for ${widget.perfiosId}',
+            onDone: () {
+              Navigator.of(context).pop(); // close dialog
+              Navigator.of(context).pop(); // go back to location screen
+            },
+          ),
+        );
       } else {
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
@@ -289,73 +291,6 @@ class _MediaSubmitScreenState extends State<MediaSubmitScreen> {
         context,
       ).showSnackBar(SnackBar(content: Text('Error: $e')));
     }
-  }
-
-  void _showSuccessDialog() {
-    showDialog(
-      context: context,
-      barrierDismissible: false,
-      builder: (_) => Dialog(
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
-        child: Padding(
-          padding: const EdgeInsets.all(32),
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              Container(
-                padding: const EdgeInsets.all(20),
-                decoration: BoxDecoration(
-                  color: Colors.green.shade50,
-                  shape: BoxShape.circle,
-                ),
-                child: const Icon(
-                  Icons.check_circle,
-                  color: Colors.green,
-                  size: 64,
-                ),
-              ),
-              const SizedBox(height: 24),
-              const Text(
-                'Submitted Successfully!',
-                style: TextStyle(
-                  fontSize: 20,
-                  fontWeight: FontWeight.bold,
-                  color: Color(0xFF1b4332),
-                ),
-              ),
-              const SizedBox(height: 12),
-              Text(
-                '${_selected.length} file${_selected.length == 1 ? '' : 's'} uploaded for ${widget.perfiosId}',
-                style: const TextStyle(color: Color(0xFF555555), fontSize: 14),
-                textAlign: TextAlign.center,
-              ),
-              const SizedBox(height: 28),
-              SizedBox(
-                width: double.infinity,
-                child: ElevatedButton(
-                  onPressed: () {
-                    Navigator.of(context).pop(); // close dialog
-                    Navigator.of(context).pop(); // go back to location screen
-                  },
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: const Color(0xFF0055b8),
-                    foregroundColor: Colors.white,
-                    padding: const EdgeInsets.symmetric(vertical: 14),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                  ),
-                  child: const Text(
-                    'Done',
-                    style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-                  ),
-                ),
-              ),
-            ],
-          ),
-        ),
-      ),
-    );
   }
 
   void _removeFile(int index) => setState(() => _selected.removeAt(index));
@@ -415,18 +350,18 @@ class _MediaSubmitScreenState extends State<MediaSubmitScreen> {
             width: double.infinity,
             padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
             color: const Color(0xFFfff8ec),
-            child: Row(
+            child: const Row(
               children: [
-                const Icon(
+                Icon(
                   Icons.info_outline,
                   color: Color(0xFFd4a017),
                   size: 18,
                 ),
-                const SizedBox(width: 8),
+                SizedBox(width: 8),
                 Expanded(
                   child: Text(
                     'Select photos/videos, then tap ✓ or the submit button',
-                    style: const TextStyle(
+                    style: TextStyle(
                       color: Color(0xFF856404),
                       fontSize: 13,
                     ),
@@ -465,9 +400,9 @@ class _MediaSubmitScreenState extends State<MediaSubmitScreen> {
                     padding: const EdgeInsets.all(12),
                     gridDelegate:
                         const SliverGridDelegateWithFixedCrossAxisCount(
-                          crossAxisCount: 3,
-                          crossAxisSpacing: 8,
-                          mainAxisSpacing: 8,
+                           crossAxisCount: 3,
+                           crossAxisSpacing: 8,
+                           mainAxisSpacing: 8,
                         ),
                     itemCount: _selected.length,
                     itemBuilder: (_, i) {

@@ -54,11 +54,7 @@
     },
     {
       "name": "test_api",
-<<<<<<< HEAD
       "version": "0.7.7",
-=======
-      "version": "0.7.9",
->>>>>>> 3478406f6cdf5db1b206697d5614374e5831fb9c
       "dependencies": [
         "async",
         "boolean_selector",
@@ -97,11 +93,7 @@
     },
     {
       "name": "matcher",
-<<<<<<< HEAD
       "version": "0.12.17",
-=======
-      "version": "0.12.18",
->>>>>>> 3478406f6cdf5db1b206697d5614374e5831fb9c
       "dependencies": [
         "async",
         "meta",
@@ -146,22 +138,14 @@
     },
     {
       "name": "material_color_utilities",
-<<<<<<< HEAD
       "version": "0.11.1",
-=======
-      "version": "0.13.0",
->>>>>>> 3478406f6cdf5db1b206697d5614374e5831fb9c
       "dependencies": [
         "collection"
       ]
     },
     {
       "name": "characters",
-<<<<<<< HEAD
       "version": "1.4.0",
-=======
-      "version": "1.4.1",
->>>>>>> 3478406f6cdf5db1b206697d5614374e5831fb9c
       "dependencies": []
     },
     {

@@ -10,7 +10,8 @@ import 'gallery_screen.dart';
 enum LocationState { initial, denied, verified }
 
 class LocationSharingScreen extends StatefulWidget {
-  const LocationSharingScreen({super.key});
+  final String? perfiosId;
+  const LocationSharingScreen({super.key, this.perfiosId});
 
   @override
   State<LocationSharingScreen> createState() => _LocationSharingScreenState();
@@ -210,6 +211,7 @@ class _LocationSharingScreenState extends State<LocationSharingScreen> {
               Navigator.of(context).push(
                 MaterialPageRoute(
                   builder: (context) => GalleryScreen(
+                    perfiosId: widget.perfiosId,
                     capturedAddress: _state == LocationState.verified ? _currentAddress : null,
                     lat: _lat,
                     lng: _lng,
@@ -294,7 +296,11 @@ class _LocationSharingScreenState extends State<LocationSharingScreen> {
                     child: OutlinedButton.icon(
                       onPressed: () {
                         Navigator.of(context).push(
-                          MaterialPageRoute(builder: (context) => const ArMeasurementScreen()),
+                          MaterialPageRoute(
+                            builder: (context) => ArMeasurementScreen(
+                              perfiosId: widget.perfiosId,
+                            ),
+                          ),
                         );
                       },
                       icon: const Icon(Icons.straighten_rounded, size: 20),

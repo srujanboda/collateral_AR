@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../services/api_service.dart';
 import 'package:flutter/services.dart';
 import 'package:ar_flutter_plugin/ar_flutter_plugin.dart';
 import 'package:ar_flutter_plugin/datatypes/config_planedetection.dart';
@@ -131,8 +132,10 @@ class MeasurementPainter extends CustomPainter {
 }
 
 // ---------- Screen StatefulWidget --------------------------------------
+
 class ArMeasurementScreen extends StatefulWidget {
-  const ArMeasurementScreen({super.key});
+  final String? perfiosId;
+  const ArMeasurementScreen({super.key, this.perfiosId});
 
   @override
   State<ArMeasurementScreen> createState() => _ArMeasurementScreenState();
@@ -153,6 +156,8 @@ class _ArMeasurementScreenState extends State<ArMeasurementScreen>
   bool _isRecording = false;
 
   // Floor Plan State
+  String? _floorPlanUrl;
+  bool _isLoadingFloorPlan = false;
   final List<RoomPolygon> _floorPlanRooms = [
     RoomPolygon(
       id: "hall",
@@ -223,10 +228,27 @@ class _ArMeasurementScreenState extends State<ArMeasurementScreen>
   @override
   void initState() {
     super.initState();
+    if (widget.perfiosId != null) {
+      _fetchFloorPlan();
+    }
     // Enable immersive full-screen mode for better AR alignment
     SystemChrome.setEnabledSystemUIMode(SystemUiMode.immersiveSticky);
     _ticker = createTicker(_onTick);
     _ticker.start();
+  }
+
+  Future<void> _fetchFloorPlan() async {
+    setState(() => _isLoadingFloorPlan = true);
+    final data = await ApiService.getApplicationDetails(widget.perfiosId!);
+    if (data != null) {
+      final url = ApiService.getFloorPlanUrl(data);
+      setState(() {
+        _floorPlanUrl = url;
+        _isLoadingFloorPlan = false;
+      });
+    } else {
+      setState(() => _isLoadingFloorPlan = false);
+    }
   }
 
   @override
@@ -379,6 +401,34 @@ class _ArMeasurementScreenState extends State<ArMeasurementScreen>
                   ),
                 ),
               ),
+              // 6. Left-Middle Floor Plan Button
+              Positioned(
+                left: 16,
+                top: MediaQuery.of(context).size.height / 2 - 40,
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    FloatingActionButton(
+                      heroTag: 'floor_plan_btn',
+                      mini: true,
+                      onPressed: _showFloorPlanOverlay,
+                      backgroundColor: Colors.white,
+                      foregroundColor: Colors.blue,
+                      child: const Icon(Icons.map_outlined),
+                    ),
+                    const SizedBox(height: 4),
+                    const Text(
+                      'Floor Plan',
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 10,
+                        fontWeight: FontWeight.bold,
+                        shadows: [Shadow(color: Colors.black, blurRadius: 4)],
+                      ),
+                    ),
+                  ],
+                ),
+              ),
             ],
           );
         },
@@ -515,13 +565,6 @@ class _ArMeasurementScreenState extends State<ArMeasurementScreen>
             color: _isRecording ? Colors.red : Colors.blue,
             onPressed: _toggleRecording,
             label: _isRecording ? "Stop" : "Record",
-          ),
-          const SizedBox(width: 8),
-          _buildActionButton(
-            icon: Icons.map_outlined,
-            color: Colors.orangeAccent,
-            onPressed: _showFloorPlanOverlay,
-            label: "Floor Plan",
           ),
         ],
       ),
@@ -865,14 +908,52 @@ class _ArMeasurementScreenState extends State<ArMeasurementScreen>
                                 color: Colors.grey.shade100,
                                 border: Border.all(color: Colors.grey.shade300),
                               ),
-                              child: Center(
-                                child: Icon(Icons.maps_home_work_outlined, size: 100, color: Colors.grey.shade300),
+                              child: _isLoadingFloorPlan
+                                  ? const Center(child: CircularProgressIndicator())
+                                  : _floorPlanUrl != null
+                                      ? Image.network(
+                                          _floorPlanUrl!,
+                                          fit: BoxFit.contain,
+                                          errorBuilder: (context, error, stackTrace) {
+                                            return const Center(
+                                              child: Column(
+                                                mainAxisAlignment: MainAxisAlignment.center,
+                                                children: [
+                                                  Icon(Icons.error_outline, color: Colors.red, size: 48),
+                                                  SizedBox(height: 8),
+                                                  Text('Failed to load image'),
+                                                ],
+                                              ),
+                                            );
+                                          },
+                                        )
+                                      : Center(
+                                          child: Column(
+                                            mainAxisAlignment: MainAxisAlignment.center,
+                                            children: [
+                                              Icon(Icons.maps_home_work_outlined, size: 100, color: Colors.grey.shade300),
+                                              const SizedBox(height: 16),
+                                              const Text('No Floor Plan Uploaded', style: TextStyle(color: Colors.grey)),
+                                              const SizedBox(height: 24),
+                                              ElevatedButton.icon(
+                                                onPressed: () {
+                                                  // Optional: Implement image picking here if needed
+                                                  ScaffoldMessenger.of(context).showSnackBar(
+                                                    const SnackBar(content: Text('Please upload floor plan in the web app')),
+                                                  );
+                                                },
+                                                icon: const Icon(Icons.upload),
+                                                label: const Text('Upload in Web App'),
+                                              ),
+                                            ],
+                                          ),
+                                        ),
+                            ),
+                            if (_floorPlanUrl == null)
+                              CustomPaint(
+                                size: const Size(550, 500),
+                                painter: FloorPlanPainter(rooms: _floorPlanRooms),
                               ),
-                            ),
-                            CustomPaint(
-                              size: const Size(550, 500),
-                              painter: FloorPlanPainter(rooms: _floorPlanRooms),
-                            ),
                           ],
                         ),
                       ),

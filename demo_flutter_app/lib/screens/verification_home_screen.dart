@@ -11,6 +11,8 @@ class VerificationHomeScreen extends StatefulWidget {
 
 class _VerificationHomeScreenState extends State<VerificationHomeScreen> {
   bool _agreedToTerms = false;
+  final TextEditingController _perfiosIdController = TextEditingController();
+  final _formKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
@@ -102,6 +104,46 @@ class _VerificationHomeScreenState extends State<VerificationHomeScreen> {
                     ),
                   ),
                   const SizedBox(height: 24),
+                  Form(
+                    key: _formKey,
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        const Text(
+                          'Application ID (Perfios ID)',
+                          style: TextStyle(
+                            fontSize: 14,
+                            fontWeight: FontWeight.w600,
+                            color: Color(0xFF333333),
+                          ),
+                        ),
+                        const SizedBox(height: 8),
+                        TextFormField(
+                          controller: _perfiosIdController,
+                          decoration: InputDecoration(
+                            hintText: 'Enter your Perfios ID (e.g. PERF-1234)',
+                            filled: true,
+                            fillColor: Colors.grey.shade50,
+                            border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(8),
+                              borderSide: const BorderSide(color: Colors.black12),
+                            ),
+                            enabledBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(8),
+                              borderSide: const BorderSide(color: Colors.black12),
+                            ),
+                          ),
+                          validator: (value) {
+                            if (value == null || value.isEmpty) {
+                              return 'Please enter your Application ID';
+                            }
+                            return null;
+                          },
+                        ),
+                      ],
+                    ),
+                  ),
+                  const SizedBox(height: 24),
                   Container(
                     decoration: BoxDecoration(
                       color: Colors.white,
@@ -186,12 +228,15 @@ class _VerificationHomeScreenState extends State<VerificationHomeScreen> {
                   child: ElevatedButton(
                     onPressed: _agreedToTerms
                         ? () {
-                            Navigator.of(context).push(
-                              MaterialPageRoute(
-                                builder: (context) =>
-                                    const LocationSharingScreen(),
-                              ),
-                            );
+                            if (_formKey.currentState!.validate()) {
+                              Navigator.of(context).push(
+                                MaterialPageRoute(
+                                  builder: (context) => LocationSharingScreen(
+                                    perfiosId: _perfiosIdController.text.trim(),
+                                  ),
+                                ),
+                              );
+                            }
                           }
                         : null,
                     style: ElevatedButton.styleFrom(

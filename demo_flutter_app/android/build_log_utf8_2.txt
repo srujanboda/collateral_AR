@@ -1,0 +1,360 @@
+﻿Running Gradle task 'assembleDebug'...                          
+flutter : Warning: Flutter 
+support for your project's 
+Android Gradle Plugin version 
+(Android Gradle Plugin 
+version 8.1.1) will soon be 
+dropped. Please upgrade your 
+Android Gradle Plugin version 
+to a version of at least 
+Android Gradle Plugin version 
+8.6.0 soon.
+At line:1 char:1
++ flutter build apk --debug > 
+android/build_log_clean_2.txt 
+2>&1
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~
+    + CategoryInfo          : 
+    NotSpecified: (Warning:   
+  Flutte...ion 8.6.0 soon.:   
+ String) [], RemoteExcepti    
+on
+    + FullyQualifiedErrorId : 
+    NativeCommandError
+ 
+Alternatively, use the flag "-
+-android-skip-build-dependency
+-validation" to bypass this 
+check.
+
+Potential fix: Your project's 
+AGP version is typically 
+defined in the plugins block 
+of the `settings.gradle` file 
+(C:\Users\91767\journey-1_upda
+ted\demo_flutter_app\android/s
+ettings.gradle), by a plugin 
+with the id of 
+com.android.application. 
+If you don't see a plugins 
+block, your project was 
+likely created with an older 
+template version. In this 
+case it is most likely 
+defined in the top-level 
+build.gradle file (C:\Users\91
+767\journey-1_updated\demo_flu
+tter_app\android/build.gradle)
+ by the following line in the 
+dependencies block of the 
+buildscript: "classpath 'com.a
+ndroid.tools.build:gradle:<ver
+sion>'".
+
+Warning: SDK processing. This 
+version only understands SDK 
+XML versions up to 3 but an 
+SDK XML file of version 4 was 
+encountered. This can happen 
+if you use versions of 
+Android Studio and the 
+command-line tools that were 
+released at different times.
+warning: [options] source 
+value 8 is obsolete and will 
+be removed in a future release
+warning: [options] target 
+value 8 is obsolete and will 
+be removed in a future release
+warning: [options] To 
+suppress warnings about 
+obsolete options, use 
+-Xlint:-options.
+warning: [options] source 
+value 8 is obsolete and will 
+be removed in a future release
+warning: [options] target 
+value 8 is obsolete and will 
+be removed in a future release
+warning: [options] To 
+suppress warnings about 
+obsolete options, use 
+-Xlint:-options.
+warning: [options] source 
+value 8 is obsolete and will 
+be removed in a future release
+warning: [options] target 
+value 8 is obsolete and will 
+be removed in a future release
+warning: [options] To 
+suppress warnings about 
+obsolete options, use 
+-Xlint:-options.
+3 warnings
+3 warnings
+3 warnings
+warning: [options] source 
+value 8 is obsolete and will 
+be removed in a future release
+warning: [options] target 
+value 8 is obsolete and will 
+be removed in a future release
+warning: [options] To 
+suppress warnings about 
+obsolete options, use 
+-Xlint:-options.
+3 warnings
+
+FAILURE: Build completed with 
+3 failures.
+
+1: Task failed with an 
+exception.
+-----------
+* What went wrong:
+Execution failed for task ':fl
+utter_plugin_android_lifecycle
+:compileDebugJavaWithJavac'.
+> Could not resolve all files 
+for configuration ':flutter_pl
+ugin_android_lifecycle:android
+JdkImage'.
+   > Failed to transform 
+core-for-system-modules.jar 
+to match attributes {artifactT
+ype=_internal_android_jdk_imag
+e, org.gradle.libraryelements=
+jar, org.gradle.usage=java-run
+time}.
+      > Execution failed for 
+JdkImageTransform: C:\Users\91
+767\AppData\Local\Android\Sdk\
+platforms\android-36\core-for-
+system-modules.jar.
+         > Error while 
+executing process 
+D:\Android\jbr\bin\jlink.exe 
+with arguments {--module-path 
+C:\Users\91767\.gradle\caches\
+transforms-4\15efc2c789feb6032
+9a9a57f3f1c37ac-2944079b-a311-
+4f8b-ae4b-2afe9d3870a3\transfo
+rmed\output\temp\jmod 
+--add-modules java.base 
+--output C:\Users\91767\.gradl
+e\caches\transforms-4\15efc2c7
+89feb60329a9a57f3f1c37ac-29440
+79b-a311-4f8b-ae4b-2afe9d3870a
+3\transformed\output\jdkImage 
+--disable-plugin 
+system-modules}
+
+* Try:
+> Run with --stacktrace 
+option to get the stack trace.
+> Run with --info or --debug 
+option to get more log output.
+> Run with --scan to get full 
+insights.
+> Get more help at 
+https://help.gradle.org.
+==============================
+==============================
+==================
+
+2: Task failed with an 
+exception.
+-----------
+* What went wrong:
+Execution failed for task ':pa
+th_provider_android:compileDeb
+ugJavaWithJavac'.
+> Could not resolve all files 
+for configuration ':path_provi
+der_android:androidJdkImage'.
+   > Failed to transform 
+core-for-system-modules.jar 
+to match attributes {artifactT
+ype=_internal_android_jdk_imag
+e, org.gradle.libraryelements=
+jar, org.gradle.usage=java-run
+time}.
+      > Execution failed for 
+JdkImageTransform: C:\Users\91
+767\AppData\Local\Android\Sdk\
+platforms\android-36\core-for-
+system-modules.jar.
+         > Error while 
+executing process 
+D:\Android\jbr\bin\jlink.exe 
+with arguments {--module-path 
+C:\Users\91767\.gradle\caches\
+transforms-4\15efc2c789feb6032
+9a9a57f3f1c37ac-2944079b-a311-
+4f8b-ae4b-2afe9d3870a3\transfo
+rmed\output\temp\jmod 
+--add-modules java.base 
+--output C:\Users\91767\.gradl
+e\caches\transforms-4\15efc2c7
+89feb60329a9a57f3f1c37ac-29440
+79b-a311-4f8b-ae4b-2afe9d3870a
+3\transformed\output\jdkImage 
+--disable-plugin 
+system-modules}
+
+* Try:
+> Run with --stacktrace 
+option to get the stack trace.
+> Run with --info or --debug 
+option to get more log output.
+> Run with --scan to get full 
+insights.
+> Get more help at 
+https://help.gradle.org.
+==============================
+==============================
+==================
+
+3: Task failed with an 
+exception.
+-----------
+* What went wrong:
+Execution failed for task 
+':app:checkDebugAarMetadata'.
+> A failure occurred while 
+executing com.android.build.gr
+adle.internal.tasks.CheckAarMe
+tadataWorkAction
+   > 10 issues were found 
+when checking AAR metadata:
+
+       1.  Dependency 'android
+x.camera:camera-video:1.5.3' 
+requires Android Gradle 
+plugin 8.6.0 or higher.
+
+           This build 
+currently uses Android Gradle 
+plugin 8.1.1.
+
+       2.  Dependency 'android
+x.camera:camera-lifecycle:1.5.
+3' requires Android Gradle 
+plugin 8.6.0 or higher.
+
+           This build 
+currently uses Android Gradle 
+plugin 8.1.1.
+
+       3.  Dependency 'android
+x.camera:camera-camera2:1.5.3'
+ requires Android Gradle 
+plugin 8.6.0 or higher.
+
+           This build 
+currently uses Android Gradle 
+plugin 8.1.1.
+
+       4.  Dependency 'android
+x.camera:camera-core:1.5.3' 
+requires Android Gradle 
+plugin 8.6.0 or higher.
+
+           This build 
+currently uses Android Gradle 
+plugin 8.1.1.
+
+       5.  Dependency 'android
+x.activity:activity-ktx:1.12.4
+' requires Android Gradle 
+plugin 8.9.1 or higher.
+
+           This build 
+currently uses Android Gradle 
+plugin 8.1.1.
+
+       6.  Dependency 'android
+x.activity:activity:1.12.4' 
+requires Android Gradle 
+plugin 8.9.1 or higher.
+
+           This build 
+currently uses Android Gradle 
+plugin 8.1.1.
+
+       7.  Dependency 'android
+x.core:core-ktx:1.17.0' 
+requires Android Gradle 
+plugin 8.9.1 or higher.
+
+           This build 
+currently uses Android Gradle 
+plugin 8.1.1.
+
+       8.  Dependency 
+'androidx.core:core:1.17.0' 
+requires Android Gradle 
+plugin 8.9.1 or higher.
+
+           This build 
+currently uses Android Gradle 
+plugin 8.1.1.
+
+       9.  Dependency 'android
+x.navigationevent:navigationev
+ent-android:1.0.2' requires 
+Android Gradle plugin 8.9.1 
+or higher.
+
+           This build 
+currently uses Android Gradle 
+plugin 8.1.1.
+
+      10.  Dependency 'android
+x.camera.featurecombinationque
+ry:featurecombinationquery:1.5
+.3' requires Android Gradle 
+plugin 8.6.0 or higher.
+
+           This build 
+currently uses Android Gradle 
+plugin 8.1.1.
+
+* Try:
+> Run with --stacktrace 
+option to get the stack trace.
+> Run with --info or --debug 
+option to get more log output.
+> Run with --scan to get full 
+insights.
+> Get more help at 
+https://help.gradle.org.
+==============================
+==============================
+==================
+
+BUILD FAILED in 1m 58s
+Running Gradle task 'assembleDebug'...                            119.0s
+
+ΓöîΓöÇ Flutter Fix ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÉ
+Γöé [!] This is likely due to a known bug in Android Gradle Plugin (AGP) versions less than 8.2.1,   Γöé
+Γöé when                                                                                             Γöé
+Γöé   1. setting a value for SourceCompatibility and                                                 Γöé
+Γöé   2. using Java 21 or above.                                                                     Γöé
+Γöé To fix this error, please upgrade your AGP version to at least 8.2.1. The version of AGP that    Γöé
+Γöé your project uses is likely defined in:                                                          Γöé
+Γöé C:\Users\91767\journey-1_updated\demo_flutter_app\android\settings.gradle.kts,                   Γöé
+Γöé in the 'plugins' closure (by the number following "com.android.application").                    Γöé
+Γöé  Alternatively, if your project was created with an older version of the templates, it is likely Γöé
+Γöé in the buildscript.dependencies closure of the top-level build.gradle:                           Γöé
+Γöé C:\Users\91767\journey-1_updated\demo_flutter_app\android\build.gradle.kts,                      Γöé
+Γöé as the number following "com.android.tools.build:gradle:".                                       Γöé
+Γöé                                                                                                  Γöé
+Γöé For more information, see:                                                                       Γöé
+Γöé https://issuetracker.google.com/issues/294137077                                                 Γöé
+Γöé https://github.com/flutter/flutter/issues/156304                                                 Γöé
+ΓööΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÿ
+Gradle task assembleDebug 
+failed with exit code 1

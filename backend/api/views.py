@@ -226,6 +226,8 @@ class MediaUploadView(APIView):
         perfios_id = request.data.get('perfios_id')
         email = request.data.get('email')
         files = request.FILES.getlist('files')
+        remarks = request.data.get('remarks')
+        signature = request.FILES.get('signature')
         
         # Location fields
         submission_address = request.data.get('submission_address')
@@ -244,7 +246,9 @@ class MediaUploadView(APIView):
             email=email,
             submission_address=submission_address,
             latitude=latitude,
-            longitude=longitude
+            longitude=longitude,
+            remarks=remarks,
+            signature_file=signature
         )
 
         if error:

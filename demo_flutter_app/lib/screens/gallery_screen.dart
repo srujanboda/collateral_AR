@@ -2,18 +2,21 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:http/http.dart' as http;
+import 'dart:ui' as ui;
 import 'package:http_parser/http_parser.dart';
 import 'package:mime/mime.dart';
 import '../widgets/media_viewer.dart';
 import '../widgets/common_widgets.dart';
+import '../widgets/signature_pad.dart';
 import '../constants.dart';
 
 class GalleryScreen extends StatefulWidget {
+  final String? perfiosId;
   final String? capturedAddress;
   final double? lat;
   final double? lng;
 
-  const GalleryScreen({super.key, this.capturedAddress, this.lat, this.lng});
+  const GalleryScreen({super.key, this.perfiosId, this.capturedAddress, this.lat, this.lng});
 
   @override
   State<GalleryScreen> createState() => _GalleryScreenState();
@@ -87,52 +90,97 @@ class _GalleryScreenState extends State<GalleryScreen> {
       return;
     }
 
-    final emailController = TextEditingController();
+    final remarksController = TextEditingController();
+    ui.Image? signatureImage;
+
     final confirmed = await showDialog<bool>(
       context: context,
       barrierDismissible: false,
-      builder: (_) => AlertDialog(
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
-        title: const Text('Enter Applicant Email', style: TextStyle(fontWeight: FontWeight.bold)),
-        content: Column(
-          mainAxisSize: MainAxisSize.min,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            const Text(
-              'Enter the email address associated with the applicant to link this media submission.',
-              style: TextStyle(fontSize: 13, color: Color(0xFF666666)),
-            ),
-            const SizedBox(height: 16),
-            TextField(
-              controller: emailController,
-              keyboardType: TextInputType.emailAddress,
-              decoration: InputDecoration(
-                labelText: 'Email Address',
-                hintText: 'applicant@example.com',
-                prefixIcon: const Icon(Icons.email_outlined, color: Color(0xFF0055b8)),
-                border: OutlineInputBorder(borderRadius: BorderRadius.circular(10)),
+      builder: (context) => StatefulBuilder(
+        builder: (context, setModalState) {
+          return AlertDialog(
+            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+            title: const Text('Finalize Submission', style: TextStyle(fontWeight: FontWeight.bold)),
+            content: SingleChildScrollView(
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  const Text(
+                    'Add any remarks and provide your digital signature to complete the verification.',
+                    style: TextStyle(fontSize: 13, color: Color(0xFF666666)),
+                  ),
+                  const SizedBox(height: 16),
+                  TextField(
+                    controller: remarksController,
+                    maxLines: 2,
+                    decoration: InputDecoration(
+                      labelText: 'Remarks (Optional)',
+                      hintText: 'e.g. Property is well maintained',
+                      border: OutlineInputBorder(borderRadius: BorderRadius.circular(10)),
+                    ),
+                  ),
+                  const SizedBox(height: 20),
+                  const Row(
+                    children: [
+                      Icon(Icons.edit, size: 16, color: Color(0xFF0055b8)),
+                      SizedBox(width: 8),
+                      Text('Digital Signature', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 14)),
+                      Text(' *', style: TextStyle(color: Colors.red)),
+                    ],
+                  ),
+                  const SizedBox(height: 8),
+                  SignaturePad(
+                    onChanged: (img) {
+                      setModalState(() {
+                        signatureImage = img;
+                      });
+                    },
+                    onClear: () {
+                      setModalState(() {
+                        signatureImage = null;
+                      });
+                    },
+                  ),
+                  const SizedBox(height: 4),
+                  const Text('Draw your signature in the box above', style: TextStyle(fontSize: 11, color: Colors.grey)),
+                ],
               ),
             ),
-          ],
-        ),
-        actions: [
-          TextButton(onPressed: () => Navigator.pop(context, false), child: const Text('Cancel')),
-          ElevatedButton(
-            onPressed: () => Navigator.pop(context, true),
-            style: ElevatedButton.styleFrom(backgroundColor: const Color(0xFF0055b8), foregroundColor: Colors.white),
-            child: const Text('Submit'),
-          ),
-        ],
+            actions: [
+              TextButton(onPressed: () => Navigator.pop(context, false), child: const Text('Cancel')),
+              ElevatedButton(
+                onPressed: signatureImage == null
+                    ? null
+                    : () => Navigator.pop(context, true),
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: const Color(0xFF0055b8),
+                  foregroundColor: Colors.white,
+                  disabledBackgroundColor: Colors.grey.shade300,
+                ),
+                child: const Text('Submit'),
+              ),
+            ],
+          );
+        },
       ),
     );
 
-    if (confirmed != true || emailController.text.trim().isEmpty) return;
+    if (confirmed != true) return;
 
     setState(() => _isUploading = true);
     try {
       final uri = Uri.parse('$apiBaseUrl/api/application/upload-media/');
       final request = http.MultipartRequest('POST', uri);
-      request.fields['email'] = emailController.text.trim();
+      
+      if (widget.perfiosId != null) {
+        request.fields['perfios_id'] = widget.perfiosId!;
+      }
+      
+      if (remarksController.text.isNotEmpty) {
+        request.fields['remarks'] = remarksController.text.trim();
+      }
+
       if (widget.capturedAddress != null) request.fields['submission_address'] = widget.capturedAddress!;
       if (widget.lat != null) request.fields['latitude'] = widget.lat.toString();
       if (widget.lng != null) request.fields['longitude'] = widget.lng.toString();
@@ -143,6 +191,18 @@ class _GalleryScreenState extends State<GalleryScreen> {
         request.files.add(
           await http.MultipartFile.fromPath('files', path, contentType: MediaType(parts[0], parts[1])),
         );
+      }
+
+      if (signatureImage != null) {
+        final byteData = await signatureImage!.toByteData(format: ui.ImageByteFormat.png);
+        if (byteData != null) {
+          final tempDir = await getTemporaryDirectory();
+          final sigFile = File('${tempDir.path}/signature_upload.png');
+          await sigFile.writeAsBytes(byteData.buffer.asUint8List());
+          request.files.add(
+            await http.MultipartFile.fromPath('signature', sigFile.path, contentType: MediaType('image', 'png')),
+          );
+        }
       }
 
       final response = await request.send();
@@ -156,8 +216,8 @@ class _GalleryScreenState extends State<GalleryScreen> {
           context: context,
           barrierDismissible: false,
           builder: (_) => SuccessDialog(
-            message: '$count media item${count == 1 ? '' : 's'} linked successfully!',
-            subMessage: 'The applicant will be updated with these field documents.',
+            message: 'Verification Submitted Successfully!',
+            subMessage: 'Remarks and signature have been recorded along with $count media items.',
             onDone: () => Navigator.of(context).pop(),
           ),
         );

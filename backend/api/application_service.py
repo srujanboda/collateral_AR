@@ -12,6 +12,7 @@ import random
 import string
 import logging
 from . import ocr_service, defect_service
+from datetime import datetime
 from django.core.files.storage import default_storage
 from django.core.files.base import ContentFile
 
@@ -211,7 +212,7 @@ def complete_application(perfios_id):
     return False, "Applicant not found"
 
 #--------------------Field Media Upload (Flutter App)---------------------------#
-def handle_media_upload(files, perfios_id=None, email=None, submission_address=None, latitude=None, longitude=None):
+def handle_media_upload(files, perfios_id=None, email=None, submission_address=None, latitude=None, longitude=None, remarks=None, signature_file=None):
     # Look up the applicant by perfios_id or email
     if perfios_id:
         existing_applicant = get_applicant_collection().find_one({"perfios_id": perfios_id})
@@ -246,6 +247,13 @@ def handle_media_upload(files, perfios_id=None, email=None, submission_address=N
                 "summary": defect_result.get("summary")
             })
 
+    # Handle signature file
+    signature_path = None
+    if signature_file:
+        sig_name = f"signature_{int(datetime.now().timestamp())}.png"
+        sig_file_path = f"signatures/{applicant_pid}/{sig_name}"
+        signature_path = default_storage.save(sig_file_path, ContentFile(signature_file.read()))
+
     # Update verification_location and append to field_media array in MongoDB
     update_data = {
         "$push": {
@@ -254,13 +262,21 @@ def handle_media_upload(files, perfios_id=None, email=None, submission_address=N
         }
     }
     
+    # Initialize $set if not present
+    if "$set" not in update_data:
+        update_data["$set"] = {}
+
+    if remarks:
+        update_data["$set"]["field_remarks"] = remarks
+    
+    if signature_path:
+        update_data["$set"]["digital_signature"] = signature_path
+
     if submission_address or latitude or longitude:
-        update_data["$set"] = {
-            "verification_location": {
-                "address": submission_address,
-                "latitude": latitude,
-                "longitude": longitude
-            }
+        update_data["$set"]["verification_location"] = {
+            "address": submission_address,
+            "latitude": latitude,
+            "longitude": longitude
         }
 
     get_applicant_collection().update_one(

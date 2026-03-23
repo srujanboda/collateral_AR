@@ -1,0 +1,29 @@
+# Exclude local environments
+backend/venv/
+backend/env/
+env/
+.env
+
+# Exclude local database
+backend/db.sqlite3
+
+# Exclude local media uploads (Railway should use cloud storage or a separate volume)
+backend/media/
+
+# Exclude non-backend code (saves space)
+demo_flutter_app/
+administrator_portal/
+journey-1/
+
+# Exclude OS/IDE files
+.git
+.idea
+.vscode
+__pycache__/
+*.pyc
+.DS_Store
+
+# Exclude temporary logs
+*.txt
+*.html
+*.json

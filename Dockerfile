@@ -15,9 +15,12 @@ RUN apt-get update \
         python3-dev \
     && rm -rf /var/lib/apt/lists/*
 
-# Copy backend requirements and install them
+# Copy backend requirements
 COPY backend/requirements.txt /app/
-RUN pip install --no-cache-dir -r requirements.txt
+
+# Install CPU-only PyTorch first to save ~2.5GB, then install other requirements
+RUN pip install --no-cache-dir torch==2.3.1 torchvision==0.18.1 --index-url https://download.pytorch.org/whl/cpu \
+    && pip install --no-cache-dir -r requirements.txt
 
 # Copy the entire backend folder into the container
 COPY backend/ /app/

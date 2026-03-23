@@ -9,7 +9,8 @@ export const appConfig = {
         logo: logo,
         collapsedLogo: collapsedLogo,
         appName: 'Applicant Management System',
-        journeyUrl: 'http://10.84.153.247:5173',
+        journeyUrl: 'http://192.168.1.37:5173',
+        apiBaseUrl: import.meta.env.VITE_API_URL || 'http://192.168.1.37:8000',
     },
     common: {
         actions: {

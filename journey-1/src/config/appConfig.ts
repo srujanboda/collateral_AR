@@ -55,6 +55,7 @@ export const appConfig = {
             home: "Back to Home"
         }
     },
+    apiBaseUrl: import.meta.env.VITE_API_URL || 'http://192.168.1.37:8000',
     footer: {
         poweredByText: "Powered by",
         logoSrc: PerfiosLogo,

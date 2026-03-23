@@ -8,9 +8,7 @@ export default function SuccessPage() {
     const location = useLocation();
     const perfios_id = location.state?.perfios_id;
 
-    // Dynamic API Base URL
-    const rawUrl = import.meta.env.VITE_API_URL || 'http://10.84.153.247:8000';
-    const API_BASE = rawUrl.endsWith('/') ? rawUrl.slice(0, -1) : rawUrl;
+    const API_BASE = appConfig.apiBaseUrl.endsWith('/') ? appConfig.apiBaseUrl.slice(0, -1) : appConfig.apiBaseUrl;
 
     useEffect(() => {
         if (perfios_id) {

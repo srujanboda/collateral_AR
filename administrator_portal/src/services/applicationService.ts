@@ -1,5 +1,6 @@
 import axios from 'axios';
-const rawUrl = import.meta.env.VITE_API_URL || 'http://10.84.153.247:8000';
+import { appConfig } from '../config/appConfig';
+const rawUrl = appConfig.app.apiBaseUrl;
 const API_BASE = rawUrl.endsWith('/') ? rawUrl.slice(0, -1) : rawUrl;
 
 const api = axios.create({

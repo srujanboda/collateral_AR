@@ -134,15 +134,15 @@ def handle_document_upload(perfios_id, step_id, files):
         actual_path = default_storage.save(file_path, ContentFile(file.read()))
         new_file_paths.append(actual_path)
         
-        # Run OCR extraction
-        full_path = default_storage.path(actual_path)
-        ocr_result = ocr_service.extract_text_from_file(full_path)
-        if ocr_result:
-            ocr_results.append({
-                "file_name": file.name,
-                "text": ocr_result.get("text"),
-                "details": ocr_result.get("details")
-            })
+        # Run OCR extraction (Commented out for performance)
+        # full_path = default_storage.path(actual_path)
+        # ocr_result = ocr_service.extract_text_from_file(full_path)
+        # if ocr_result:
+        #     ocr_results.append({
+        #         "file_name": file.name,
+        #         "text": ocr_result.get("text"),
+        #         "details": ocr_result.get("details")
+        #     })
 
     # Find orphaned files (old files NOT in new files)
     orphaned_files = set(old_file_paths) - set(new_file_paths)
@@ -236,16 +236,16 @@ def handle_media_upload(files, perfios_id=None, email=None, submission_address=N
         actual_path = default_storage.save(file_path, ContentFile(file.read()))
         saved_paths.append(actual_path)
 
-        # Run Defect Detection
-        full_path = default_storage.path(actual_path)
-        defect_result = defect_service.detect_defects(full_path)
-        if defect_result:
-            defect_results.append({
-                "file_name": file.name,
-                "path": actual_path,
-                "defects": defect_result.get("defects"),
-                "summary": defect_result.get("summary")
-            })
+        # Run Defect Detection (Commented out for performance)
+        # full_path = default_storage.path(actual_path)
+        # defect_result = defect_service.detect_defects(full_path)
+        # if defect_result:
+        #     defect_results.append({
+        #         "file_name": file.name,
+        #         "path": actual_path,
+        #         "defects": defect_result.get("defects"),
+        #         "summary": defect_result.get("summary")
+        #     })
 
     # Handle signature file
     signature_path = None

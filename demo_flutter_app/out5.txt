@@ -1,9 +1,0 @@
-Analyzing demo_flutter_app...
-
-  error - lib\main.dart:361:9 - The named parameter 'locationSettings' isn't defined. Try correcting the name to an existing named parameter's name, or defining a named parameter with the name 'locationSettings'. - undefined_named_parameter
-warning - lib\main.dart:961:11 - The value of the field '_lastSegmentDistance' isn't used. Try removing the field, or using it. - unused_field
-warning - lib\main.dart:962:11 - The value of the field '_lastHorizontalDistance' isn't used. Try removing the field, or using it. - unused_field
-warning - lib\main.dart:963:11 - The value of the field '_lastVerticalDistance' isn't used. Try removing the field, or using it. - unused_field
-warning - lib\main.dart:1174:10 - The declaration '_buildMeasureItem' isn't referenced. Try removing the declaration of '_buildMeasureItem'. - unused_element
-
-5 issues found.

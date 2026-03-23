@@ -328,9 +328,9 @@ class _LocationSharingScreenState extends State<LocationSharingScreen> {
       case LocationState.initial:
         return _buildActionCard(
           icon: Icons.location_on_outlined,
-          title: 'Share Your Current Location',
+          title: 'Determine Property Location',
           subtitle: 'Click the button below and allow us to access your current location.',
-          buttonText: 'Share My Location',
+          buttonText: 'Locate Property',
           onPressed: _showPermissionDialog,
           iconColor: const Color(0xFF0055b8),
           bgColor: const Color(0xFFf8faff),

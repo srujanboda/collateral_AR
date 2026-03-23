@@ -14,6 +14,7 @@ export default function UploadPage() {
 
     const [allFiles, setAllFiles] = useState<Record<number, File[]>>({});
     const [error, setError] = useState<string | null>(null);
+    const [isUploading, setIsUploading] = useState(false);
 
     const { steps, titlePrefix, subtitle, infoBoxPrefix, errors, buttons } = appConfig.uploadPage;
 
@@ -48,13 +49,14 @@ export default function UploadPage() {
     const locationState = useLocation().state as { perfios_id?: string };
     const perfios_id = locationState?.perfios_id || new URLSearchParams(window.location.search).get('perfios_id');
 
-    // Dynamic API Base URL
-    const rawUrl = import.meta.env.VITE_API_URL || 'http://10.84.153.247:8000';
-    const API_BASE = rawUrl.endsWith('/') ? rawUrl.slice(0, -1) : rawUrl;
+    const API_BASE = appConfig.apiBaseUrl.endsWith('/') ? appConfig.apiBaseUrl.slice(0, -1) : appConfig.apiBaseUrl;
 
     const handleNext = async () => {
         // Upload files for current step to backend
         if (currentFiles.length > 0 && perfios_id) {
+            setIsUploading(true);
+            setError(null);
+            
             const formData = new FormData();
             formData.append('perfios_id', perfios_id);
             formData.append('step_id', step.toString());
@@ -63,9 +65,6 @@ export default function UploadPage() {
             });
 
             console.log('Uploading to:', `${API_BASE}/api/application/upload-document/`);
-            console.log('perfios_id:', perfios_id);
-            console.log('step_id:', step);
-            console.log('files count:', currentFiles.length);
 
             try {
                 const response = await fetch(`${API_BASE}/api/application/upload-document/`, {
@@ -73,21 +72,20 @@ export default function UploadPage() {
                     body: formData,
                 });
 
-                console.log('Response status:', response.status);
-
                 if (!response.ok) {
-                    const errorText = await response.text();
-                    console.error('Server error:', errorText);
-                    throw new Error(`Server responded with ${response.status}`);
+                    const data = await response.json();
+                    throw new Error(data.error || `Server responded with ${response.status}`);
                 }
 
                 const result = await response.json();
                 console.log('Upload successful:', result);
-            } catch (err) {
+            } catch (err: any) {
                 console.error('Upload failed:', err);
-                setError('Failed to upload files to server. Please try again.');
+                setError(err.message || 'Failed to upload files to server. Please try again.');
+                setIsUploading(false);
                 return;
             }
+            setIsUploading(false);
         }
 
         if (step < 4) {
@@ -191,16 +189,36 @@ export default function UploadPage() {
                     type="button"
                     onClick={handleNext}
                     disabled={
+                        isUploading || (
                         step < 4
                             ? currentFiles.length === 0
                             : steps.some(s => !allFiles[s.id] || allFiles[s.id].length === 0)
+                        )
                     }
                     style={{
                         padding: '16px',
-                        fontSize: '16px'
+                        fontSize: '16px',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        gap: '8px'
                     }}
                 >
-                    {step === 4 ? buttons.finish : buttons.next}
+                    {isUploading ? (
+                        <>
+                            <span className="spinner" style={{
+                                width: '18px',
+                                height: '18px',
+                                border: '2px solid rgba(255,255,255,0.3)',
+                                borderTopColor: 'white',
+                                borderRadius: '50%',
+                                animation: 'spin 0.8s linear infinite'
+                            }} />
+                            Processing...
+                        </>
+                    ) : (
+                        step === 4 ? buttons.finish : buttons.next
+                    )}
                 </Button>
 
 

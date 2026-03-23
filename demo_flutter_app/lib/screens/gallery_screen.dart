@@ -2,12 +2,12 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:http/http.dart' as http;
-import 'dart:ui' as ui;
+// import 'dart:ui' as ui; // Removed
 import 'package:http_parser/http_parser.dart';
 import 'package:mime/mime.dart';
 import '../widgets/media_viewer.dart';
 import '../widgets/common_widgets.dart';
-import '../widgets/signature_pad.dart';
+// import '../widgets/signature_pad.dart'; // Removed
 import '../constants.dart';
 
 class GalleryScreen extends StatefulWidget {
@@ -91,7 +91,7 @@ class _GalleryScreenState extends State<GalleryScreen> {
     }
 
     final remarksController = TextEditingController();
-    ui.Image? signatureImage;
+    // ui.Image? signatureImage; // Removed
 
     final confirmed = await showDialog<bool>(
       context: context,
@@ -107,7 +107,7 @@ class _GalleryScreenState extends State<GalleryScreen> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   const Text(
-                    'Add any remarks and provide your digital signature to complete the verification.',
+                    'Add any optional remarks to complete the verification.',
                     style: TextStyle(fontSize: 13, color: Color(0xFF666666)),
                   ),
                   const SizedBox(height: 16),
@@ -120,43 +120,19 @@ class _GalleryScreenState extends State<GalleryScreen> {
                       border: OutlineInputBorder(borderRadius: BorderRadius.circular(10)),
                     ),
                   ),
-                  const SizedBox(height: 20),
-                  const Row(
-                    children: [
-                      Icon(Icons.edit, size: 16, color: Color(0xFF0055b8)),
-                      SizedBox(width: 8),
-                      Text('Digital Signature', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 14)),
-                      Text(' *', style: TextStyle(color: Colors.red)),
-                    ],
-                  ),
-                  const SizedBox(height: 8),
-                  SignaturePad(
-                    onChanged: (img) {
-                      setModalState(() {
-                        signatureImage = img;
-                      });
-                    },
-                    onClear: () {
-                      setModalState(() {
-                        signatureImage = null;
-                      });
-                    },
-                  ),
+                  // Signature removed
                   const SizedBox(height: 4),
-                  const Text('Draw your signature in the box above', style: TextStyle(fontSize: 11, color: Colors.grey)),
+                  // Instruction removed
                 ],
               ),
             ),
             actions: [
               TextButton(onPressed: () => Navigator.pop(context, false), child: const Text('Cancel')),
               ElevatedButton(
-                onPressed: signatureImage == null
-                    ? null
-                    : () => Navigator.pop(context, true),
+                onPressed: () => Navigator.pop(context, true),
                 style: ElevatedButton.styleFrom(
                   backgroundColor: const Color(0xFF0055b8),
                   foregroundColor: Colors.white,
-                  disabledBackgroundColor: Colors.grey.shade300,
                 ),
                 child: const Text('Submit'),
               ),
@@ -193,17 +169,7 @@ class _GalleryScreenState extends State<GalleryScreen> {
         );
       }
 
-      if (signatureImage != null) {
-        final byteData = await signatureImage!.toByteData(format: ui.ImageByteFormat.png);
-        if (byteData != null) {
-          final tempDir = await getTemporaryDirectory();
-          final sigFile = File('${tempDir.path}/signature_upload.png');
-          await sigFile.writeAsBytes(byteData.buffer.asUint8List());
-          request.files.add(
-            await http.MultipartFile.fromPath('signature', sigFile.path, contentType: MediaType('image', 'png')),
-          );
-        }
-      }
+      // Signature upload removed
 
       final response = await request.send();
       if (!mounted) return;
@@ -217,7 +183,7 @@ class _GalleryScreenState extends State<GalleryScreen> {
           barrierDismissible: false,
           builder: (_) => SuccessDialog(
             message: 'Verification Submitted Successfully!',
-            subMessage: 'Remarks and signature have been recorded along with $count media items.',
+            subMessage: 'Remarks have been recorded along with $count media items.',
             onDone: () => Navigator.of(context).pop(),
           ),
         );

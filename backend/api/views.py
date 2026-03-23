@@ -121,6 +121,7 @@ class ApplicationDeleteView(APIView):
 
 
 #--------------------Documentuploading---------------------------#
+@method_decorator(csrf_exempt, name='dispatch')
 class DocumentUploadView(APIView):
     def post(self, request):
         perfios_id = request.data.get('perfios_id')

@@ -5,14 +5,12 @@ import dns.resolver
 import os
 from dotenv import load_dotenv
 
-# Load environment variables from .env file
-load_dotenv()
+# Load environment variables from backend/.env file
+load_dotenv(os.path.join(os.path.dirname(__file__), 'backend', '.env'))
 
 # --- CONFIGURATION ---
-# The script now safely loads the URI from your .env file
-# (Make sure MONGODB_URI is set in your .env)
 MONGO_URI = os.getenv('MONGODB_URI')
-DB_NAME = os.getenv('MONGODB_NAME', 'journey_prod')
+DB_NAME = os.getenv('MONGODB_NAME', 'colletral_ar')
 
 def hash_password(password):
     return hashlib.sha256(password.encode()).hexdigest()
@@ -23,8 +21,8 @@ def create_admin():
     db = client[DB_NAME]
     collection = db["users"]
 
-    username = "srujanboda14@gmail.com"
-    password = "AdminPassword123"
+    username = "admin@perfios.com"
+    password = "Perfios@123"
     
     # Check if user already exists
     if collection.find_one({"username": username}):

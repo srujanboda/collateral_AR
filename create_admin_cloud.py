@@ -2,6 +2,11 @@ from pymongo import MongoClient
 import hashlib
 from datetime import datetime
 import dns.resolver
+import os
+from dotenv import load_dotenv
+
+# Load environment variables from .env file
+load_dotenv()
 
 # --- CONFIGURATION ---
 # The script now safely loads the URI from your .env file

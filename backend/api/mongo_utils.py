@@ -10,6 +10,7 @@ def get_db_handle():
     db_name = os.getenv('MONGODB_NAME', 'colletral_ar')
     
     print(f"Connecting to MongoDB with URI starting: {mongo_uri[:15]}...")
+    print(f"Using Database: {db_name}")
     client = MongoClient(mongo_uri)
     db = client[db_name]
     return db

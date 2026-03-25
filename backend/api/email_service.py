@@ -1,11 +1,42 @@
 import threading
-from django.core.mail import send_mail
+import requests
+import os
 from django.conf import settings
+
+BREVO_API_KEY = os.getenv('BREVO_API_KEY', '')
+FROM_EMAIL = os.getenv('EMAIL_HOST_USER', 'srujanboda14@gmail.com')
+FROM_NAME = 'Collateral AR'
+
+def _send_email_via_brevo(to_email, subject, message):
+    """Send email using Brevo's HTTP API (bypasses SMTP blocks on Render)."""
+    url = "https://api.brevo.com/v3/smtp/email"
+    headers = {
+        "api-key": BREVO_API_KEY,
+        "Content-Type": "application/json",
+        "accept": "application/json"
+    }
+    data = {
+        "sender": {"name": FROM_NAME, "email": FROM_EMAIL},
+        "to": [{"email": to_email}],
+        "subject": subject,
+        "textContent": message
+    }
+    try:
+        response = requests.post(url, json=data, headers=headers, timeout=10)
+        if response.status_code in [200, 201, 202]:
+            print(f"Email sent successfully to {to_email}")
+            return True, ""
+        else:
+            error_msg = f"Brevo error {response.status_code}: {response.text}"
+            print(f"Error sending email: {error_msg}")
+            return False, error_msg
+    except Exception as e:
+        print(f"Error sending email: {e}")
+        return False, str(e)
 
 def send_application_link(email, name, journey_url):
     subject = "Application Created Successfully"
-    message = f"""
-Hi {name},
+    message = f"""Hi {name},
 
 Your application has been successfully created.
 
@@ -14,18 +45,7 @@ To proceed with the next steps of the process, please upload your documents usin
 
 Thank you!
 """
-    try:
-        send_mail(
-            subject,
-            message,
-            settings.DEFAULT_FROM_EMAIL,
-            [email],
-            fail_silently=False,
-        )
-        return True, ""
-    except Exception as e:
-        print(f"Error sending email: {e}")
-        return False, str(e)
+    return _send_email_via_brevo(email, subject, message)
 
 def _send_app_link_thread(perfios_id, email, name, journey_url):
     """Internal function to be run in a thread."""
@@ -35,21 +55,18 @@ def _send_app_link_thread(perfios_id, email, name, journey_url):
     application_service.update_application(perfios_id, {'email_status': email_status_val})
 
 def send_application_link_and_update_status(perfios_id, email, name, journey_url):
-    """
-    Starts a background thread to send application link and update status.
-    """
+    """Starts a background thread to send application link and update status."""
     thread = threading.Thread(
         target=_send_app_link_thread,
         args=(perfios_id, email, name, journey_url)
     )
-    thread.daemon = True  # Thread will exit when main process exits
+    thread.daemon = True
     thread.start()
-    return True # Return immediately
+    return True
 
 def send_user_credentials(email, name, password):
     subject = "Your Admin Portal Credentials"
-    message = f"""
-Hi {name},
+    message = f"""Hi {name},
 
 An account has been created for you on the Admin Portal. Here are your login credentials:
 
@@ -63,18 +80,7 @@ For security reasons, we recommend changing your password after your first login
 Thank you!
 """
     def _send_email():
-        try:
-            send_mail(
-                subject,
-                message,
-                settings.DEFAULT_FROM_EMAIL,
-                [email],
-                fail_silently=False,
-            )
-            return True
-        except Exception as e:
-            print(f"Error sending credentials email: {e}")
-            return False
+        _send_email_via_brevo(email, subject, message)
 
     thread = threading.Thread(target=_send_email)
     thread.daemon = True
@@ -83,28 +89,16 @@ Thank you!
 
 def send_document_upload_success(email, name):
     subject = "Documents Uploaded Successfully"
-    message = f"""
-Hi {name},
+    message = f"""Hi {name},
 
-We have successfully received your uploaded documents. 
+We have successfully received your uploaded documents.
 
 Our team will review them shortly. We will notify you if any further action is required on your part.
 
 Thank you for your cooperation!
 """
     def _send_email():
-        try:
-            send_mail(
-                subject,
-                message,
-                settings.DEFAULT_FROM_EMAIL,
-                [email],
-                fail_silently=False,
-            )
-            return True
-        except Exception as e:
-            print(f"Error sending document success email: {e}")
-            return False
+        _send_email_via_brevo(email, subject, message)
 
     thread = threading.Thread(target=_send_email)
     thread.daemon = True

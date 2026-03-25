@@ -4,9 +4,10 @@ from datetime import datetime
 import dns.resolver
 
 # --- CONFIGURATION ---
-# Paste your MongoDB URI here (the one with %40 for the password)
-MONGO_URI = "mongodb+srv://backend:xocCvwzsoVhUQ5Si@cluster0.hdigfky.mongodb.net/journey_prod?appName=Cluster0"
-DB_NAME = "journey_prod"
+# The script now safely loads the URI from your .env file
+# (Make sure MONGODB_URI is set in your .env)
+MONGO_URI = os.getenv('MONGODB_URI')
+DB_NAME = os.getenv('MONGODB_NAME', 'journey_prod')
 
 def hash_password(password):
     return hashlib.sha256(password.encode()).hexdigest()

@@ -1,11 +1,12 @@
 from pymongo import MongoClient
 import hashlib
 from datetime import datetime
+import dns.resolver
 
 # --- CONFIGURATION ---
 # Paste your MongoDB URI here (the one with %40 for the password)
-MONGO_URI = "mongodb+srv://Srujan:Srujan%401403@cluster1.zpdjouh.mongodb.net/?appName=Cluster1"
-DB_NAME = "colletral_ar"
+MONGO_URI = "mongodb+srv://backend:xocCvwzsoVhUQ5Si@cluster0.hdigfky.mongodb.net/journey_prod?appName=Cluster0"
+DB_NAME = "journey_prod"
 
 def hash_password(password):
     return hashlib.sha256(password.encode()).hexdigest()

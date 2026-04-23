@@ -78,3 +78,11 @@ fun serializeLocalTransformation(node: BaseTransformableNode): HashMap<String, A
 
     return serializedLocalTransformation
 }
+
+fun serializeMatrix(matrix: FloatArray): DoubleArray {
+    val serializedMatrixDouble = DoubleArray(matrix.size)
+    for (i in matrix.indices) {
+        serializedMatrixDouble[i] = matrix[i].toDouble()
+    }
+    return serializedMatrixDouble
+}

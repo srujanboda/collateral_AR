@@ -6,9 +6,12 @@ from dotenv import load_dotenv
 load_dotenv()
 
 def get_db_handle():
-    mongo_uri = os.getenv('MONGODB_URI', 'mongodb://localhost:27017/')
+    mongo_uri = os.getenv('MONGODB_URI')
     db_name = os.getenv('MONGODB_NAME', 'colletral_ar')
-    
+
+    if not mongo_uri:
+        raise ValueError("MONGODB_URI is not set.")
+
     print(f"Connecting to MongoDB with URI starting: {mongo_uri[:15]}...")
     print(f"Using Database: {db_name}")
     client = MongoClient(mongo_uri)

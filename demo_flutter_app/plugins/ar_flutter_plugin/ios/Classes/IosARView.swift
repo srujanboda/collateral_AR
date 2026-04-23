@@ -89,6 +89,31 @@ class IosARView: NSObject, FlutterPlatformView, ARSCNViewDelegate, UIGestureReco
                     result(FlutterError())
                 }
                 break
+            case "getProjectionMatrix":
+                if let camera = sceneView.session.currentFrame?.camera {
+                    let viewportSize = sceneView.bounds.size
+                    let orientation = UIApplication.shared.statusBarOrientation
+                    let projectionMatrix = camera.projectionMatrix(for: orientation, viewportSize: viewportSize, zNear: 0.01, zFar: 100.0)
+                    result(serializeMatrix(projectionMatrix))
+                } else {
+                    result(FlutterError())
+                }
+                break
+            case "getFrameData":
+                if let frame = sceneView.session.currentFrame {
+                    let camera = frame.camera
+                    let viewportSize = sceneView.bounds.size
+                    let orientation = UIApplication.shared.statusBarOrientation
+                    
+                    var frameData = Dictionary<String, Any>()
+                    frameData["cameraPose"] = serializeMatrix(camera.transform)
+                    frameData["projectionMatrix"] = serializeMatrix(camera.projectionMatrix(for: orientation, viewportSize: viewportSize, zNear: 0.01, zFar: 100.0))
+                    
+                    result(frameData)
+                } else {
+                    result(FlutterError())
+                }
+                break
             case "getAnchorPose":
             if let cameraPose = anchorCollection[arguments?["anchorId"] as! String]?.transform {
                     result(serializeMatrix(cameraPose))

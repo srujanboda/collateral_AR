@@ -22,6 +22,7 @@ import io.carius.lars.ar_flutter_plugin.Serialization.deserializeMatrix4
 import io.carius.lars.ar_flutter_plugin.Serialization.serializeAnchor
 import io.carius.lars.ar_flutter_plugin.Serialization.serializeHitResult
 import io.carius.lars.ar_flutter_plugin.Serialization.serializePose
+import io.carius.lars.ar_flutter_plugin.Serialization.serializeMatrix
 import io.flutter.FlutterInjector
 import io.flutter.embedding.engine.loader.FlutterLoader
 import io.flutter.plugin.common.BinaryMessenger
@@ -117,6 +118,36 @@ internal class AndroidARView(
                                 result.success(serializePose(cameraPose!!))
                             } else {
                                 result.error("Error", "could not get camera pose", null)
+                            }
+                        }
+                        "getProjectionMatrix" -> {
+                            val camera = arSceneView.arFrame?.camera
+                            if (camera != null) {
+                                val projectionMatrix = FloatArray(16)
+                                camera.getProjectionMatrix(projectionMatrix, 0, 0.01f, 100.0f)
+                                result.success(serializeMatrix(projectionMatrix))
+                            } else {
+                                result.error("Error", "could not get projection matrix", null)
+                            }
+                        }
+                        "getFrameData" -> {
+                            val frame = arSceneView.arFrame
+                            val camera = frame?.camera
+                            if (frame != null && camera != null) {
+                                val frameData = HashMap<String, Any>()
+                                
+                                // Get Pose (View Matrix)
+                                val cameraPose = camera.displayOrientedPose
+                                frameData["cameraPose"] = serializePose(cameraPose)
+                                
+                                // Get Projection Matrix
+                                val projectionMatrix = FloatArray(16)
+                                camera.getProjectionMatrix(projectionMatrix, 0, 0.01f, 100.0f)
+                                frameData["projectionMatrix"] = serializeMatrix(projectionMatrix)
+                                
+                                result.success(frameData)
+                            } else {
+                                result.error("Error", "could not get frame data", null)
                             }
                         }
                         "snapshot" -> {

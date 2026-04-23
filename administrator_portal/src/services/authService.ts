@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const rawUrl = import.meta.env.VITE_API_URL || 'http://localhost:8000';
+const rawUrl = import.meta.env.VITE_API_URL || 'https://collateral-ar.onrender.com';
 const API_BASE = rawUrl.endsWith('/') ? rawUrl.slice(0, -1) : rawUrl;
 const API_URL = `${API_BASE}/api`;
 

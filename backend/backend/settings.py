@@ -76,7 +76,8 @@ CORS_ALLOW_HEADERS = [
     'x-csrftoken',
     'x-requested-with',
 ]
-CORS_ALLOWED_ORIGINS = os.getenv('CORS_ALLOWED_ORIGINS', 'http://localhost:5173,http://localhost:5174').split(',')
+cors_origins = os.getenv('CORS_ALLOWED_ORIGINS', '')
+CORS_ALLOWED_ORIGINS = [origin.strip() for origin in cors_origins.split(',') if origin.strip()]
 
 ROOT_URLCONF = 'backend.urls'
 
@@ -170,8 +171,8 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
 
 # Journey-1 Link Configuration
-JOURNEY_URL = os.getenv('JOURNEY_URL', "http://localhost:5173/")
-ADMIN_PORTAL_URL = os.getenv('ADMIN_PORTAL_URL', "http://localhost:5174/")
+JOURNEY_URL = os.getenv('JOURNEY_URL', "")
+ADMIN_PORTAL_URL = os.getenv('ADMIN_PORTAL_URL', "")
 
 # ASGI and Channels
 ASGI_APPLICATION = 'backend.asgi.application'

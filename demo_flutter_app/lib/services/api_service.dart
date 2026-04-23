@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'dart:io';
+import 'package:flutter/foundation.dart';
 import 'package:http/http.dart' as http;
 import 'package:http_parser/http_parser.dart';
 import 'package:path/path.dart' as p;
@@ -13,11 +14,11 @@ class ApiService {
       if (response.statusCode == 200) {
         return json.decode(response.body);
       } else {
-        print('Error fetching application: ${response.statusCode}');
+        debugPrint('Error fetching application: ${response.statusCode}');
         return null;
       }
     } catch (e) {
-      print('Exception in getApplicationDetails: $e');
+      debugPrint('Exception in getApplicationDetails: $e');
       return null;
     }
   }
@@ -61,8 +62,11 @@ class ApiService {
       
       final ext = p.extension(imageFile.path).toLowerCase();
       String mimeType = 'image/jpeg';
-      if (ext == '.png') mimeType = 'image/png';
-      else if (ext == '.webp') mimeType = 'image/webp';
+      if (ext == '.png') {
+        mimeType = 'image/png';
+      } else if (ext == '.webp') {
+        mimeType = 'image/webp';
+      }
 
       request.files.add(await http.MultipartFile.fromPath(
         'files',
@@ -73,7 +77,7 @@ class ApiService {
       final response = await request.send();
       return response.statusCode == 201;
     } catch (e) {
-      print('Exception in uploadFloorPlan: $e');
+      debugPrint('Exception in uploadFloorPlan: $e');
       return false;
     }
   }

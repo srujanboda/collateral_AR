@@ -14,7 +14,8 @@ import AddApplicantDialog from '../components/features/AddApplicantDialog';
 import ApplicantDetailView from '../components/features/ApplicantDetailView';
 
 // Constants
-const API_BASE = `${window.location.protocol}//${window.location.hostname}:8000`;
+const rawApiUrl = import.meta.env.VITE_API_URL || 'https://collateral-ar.onrender.com';
+const API_BASE = rawApiUrl.endsWith('/') ? rawApiUrl.slice(0, -1) : rawApiUrl;
 const documentSteps = [
     { id: 1, label: "Land Records" },
     { id: 2, label: "Ownership Documents" },
@@ -37,8 +38,7 @@ const ApplicationsPage: React.FC = () => {
 
     // WebSocket Effect
     useEffect(() => {
-        const rawUrl = import.meta.env.VITE_API_URL || 'http://localhost:8000';
-        const wsUrl = rawUrl.replace(/^http/, 'ws') + '/ws/applicants/';
+        const wsUrl = API_BASE.replace(/^http/, 'ws') + '/ws/applicants/';
         console.log('Connecting to WebSocket:', wsUrl);
         const socket = new WebSocket(wsUrl);
 

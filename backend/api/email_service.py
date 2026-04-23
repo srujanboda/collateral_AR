@@ -1,37 +1,22 @@
 import threading
-import requests
 import os
 from django.conf import settings
+from django.core.mail import send_mail
 
-BREVO_API_KEY = os.getenv('BREVO_API_KEY', '')
-FROM_EMAIL = os.getenv('EMAIL_HOST_USER', 'srujanboda14@gmail.com')
-FROM_NAME = 'Collateral AR'
-
-def _send_email_via_brevo(to_email, subject, message):
-    """Send email using Brevo's HTTP API (bypasses SMTP blocks on Render)."""
-    url = "https://api.brevo.com/v3/smtp/email"
-    headers = {
-        "api-key": BREVO_API_KEY,
-        "Content-Type": "application/json",
-        "accept": "application/json"
-    }
-    data = {
-        "sender": {"name": FROM_NAME, "email": FROM_EMAIL},
-        "to": [{"email": to_email}],
-        "subject": subject,
-        "textContent": message
-    }
+def _send_email_via_smtp(to_email, subject, message):
+    """Send email using Django's configured SMTP backend."""
     try:
-        response = requests.post(url, json=data, headers=headers, timeout=10)
-        if response.status_code in [200, 201, 202]:
-            print(f"Email sent successfully to {to_email}")
-            return True, ""
-        else:
-            error_msg = f"Brevo error {response.status_code}: {response.text}"
-            print(f"Error sending email: {error_msg}")
-            return False, error_msg
+        send_mail(
+            subject=subject,
+            message=message,
+            from_email=settings.DEFAULT_FROM_EMAIL,
+            recipient_list=[to_email],
+            fail_silently=False,
+        )
+        print(f"Email sent successfully to {to_email}")
+        return True, ""
     except Exception as e:
-        print(f"Error sending email: {e}")
+        print(f"Error sending email via SMTP: {e}")
         return False, str(e)
 
 def send_application_link(email, name, journey_url):
@@ -45,7 +30,7 @@ To proceed with the next steps of the process, please upload your documents usin
 
 Thank you!
 """
-    return _send_email_via_brevo(email, subject, message)
+    return _send_email_via_smtp(email, subject, message)
 
 def _send_app_link_thread(perfios_id, email, name, journey_url):
     """Internal function to be run in a thread."""
@@ -80,7 +65,7 @@ For security reasons, we recommend changing your password after your first login
 Thank you!
 """
     def _send_email():
-        _send_email_via_brevo(email, subject, message)
+        _send_email_via_smtp(email, subject, message)
 
     thread = threading.Thread(target=_send_email)
     thread.daemon = True
@@ -98,7 +83,7 @@ Our team will review them shortly. We will notify you if any further action is r
 Thank you for your cooperation!
 """
     def _send_email():
-        _send_email_via_brevo(email, subject, message)
+        _send_email_via_smtp(email, subject, message)
 
     thread = threading.Thread(target=_send_email)
     thread.daemon = True

@@ -4,7 +4,7 @@ import 'package:geocoding/geocoding.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:gal/gal.dart';
 import '../widgets/common_widgets.dart';
-import '../ar_measurement_screen.dart';
+import '../features/ar_measurement/presentation/pages/ar_measurement_page.dart';
 import 'gallery_screen.dart';
 
 enum LocationState { initial, denied, verified }
@@ -22,6 +22,33 @@ class _LocationSharingScreenState extends State<LocationSharingScreen> {
   String _currentAddress = 'Fetching location...';
   double? _lat;
   double? _lng;
+
+  String _buildAreaLevelAddress(Placemark place) {
+    // Keep only stable, area-level components to avoid noisy floor/unit details.
+    final parts = <String>[
+      if ((place.subLocality ?? '').trim().isNotEmpty) place.subLocality!.trim(),
+      if ((place.locality ?? '').trim().isNotEmpty) place.locality!.trim(),
+      if ((place.administrativeArea ?? '').trim().isNotEmpty)
+        place.administrativeArea!.trim(),
+      if ((place.country ?? '').trim().isNotEmpty) place.country!.trim(),
+    ];
+
+    final unique = <String>{};
+    final cleaned = <String>[];
+    for (final item in parts) {
+      // Drop anything that contains digits (house numbers, floors, pins, etc.)
+      if (RegExp(r'\d').hasMatch(item)) continue;
+      final key = item.toLowerCase();
+      if (!unique.contains(key)) {
+        unique.add(key);
+        cleaned.add(item);
+      }
+    }
+
+    return cleaned.isNotEmpty
+        ? cleaned.join(', ')
+        : 'Location verified (area-level address unavailable)';
+  }
 
   Future<void> _fetchLocationAndAddress() async {
     bool serviceEnabled;
@@ -64,9 +91,7 @@ class _LocationSharingScreenState extends State<LocationSharingScreen> {
         Placemark place = placemarks[0];
         setState(() {
           _state = LocationState.verified;
-          _currentAddress =
-              '${place.street ?? ''}, ${place.subLocality ?? ''}, ${place.locality ?? ''}, ${place.postalCode ?? ''} ${place.country ?? ''}'
-                  .replaceAll(RegExp(r',\s*,'), ',');
+          _currentAddress = _buildAreaLevelAddress(place);
         });
       } else {
         setState(() {

@@ -49,6 +49,38 @@ class ARSessionManager {
     }
   }
 
+  /// Returns the hardware-calibrated projection matrix in Matrix4 format
+  Future<Matrix4?> getProjectionMatrix() async {
+    try {
+      final serializedMatrix =
+          await _channel.invokeMethod<List<dynamic>>('getProjectionMatrix', {});
+      return MatrixConverter().fromJson(serializedMatrix!);
+    } catch (e) {
+      print('Error caught: $e');
+      return null;
+    }
+  }
+
+  /// Returns both camera pose and hardware-calibrated projection matrix in one call.
+  /// Use this for zero-jitter AR rendering.
+  Future<Map<String, Matrix4>?> getFrameData() async {
+    try {
+      final response =
+          await _channel.invokeMethod<Map<dynamic, dynamic>>('getFrameData', {});
+      if (response == null) return null;
+
+      return {
+        'cameraPose':
+            MatrixConverter().fromJson(response['cameraPose'] as List<dynamic>),
+        'projectionMatrix': MatrixConverter()
+            .fromJson(response['projectionMatrix'] as List<dynamic>),
+      };
+    } catch (e) {
+      print('Error caught: $e');
+      return null;
+    }
+  }
+
   /// Returns the given anchor pose in Matrix4 format with respect to the world coordinate system of the [ARView]
   Future<Matrix4?> getPose(ARAnchor anchor) async {
     try {

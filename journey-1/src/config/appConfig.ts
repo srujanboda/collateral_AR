@@ -55,7 +55,7 @@ export const appConfig = {
             home: "Back to Home"
         }
     },
-    apiBaseUrl: import.meta.env.VITE_API_URL || 'http://192.168.1.37:8000',
+    apiBaseUrl: import.meta.env.VITE_API_URL || 'https://collateral-ar.onrender.com',
     footer: {
         poweredByText: "Powered by",
         logoSrc: PerfiosLogo,
